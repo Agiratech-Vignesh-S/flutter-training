@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './transaction.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,20 +13,9 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   List<Transaction> Transactions = [
-    Transaction(
-      id: 'T1',
-      Title: 'new phone',
-      amount: 2000,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 'T2',
-      Title: 'new charger',
-      amount: 100,
-      date: DateTime.now(),
-    )
   ];
-
+var inputtitle;
+var inputamount;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,7 +25,7 @@ class MyAppState extends State<MyApp> {
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.add))],
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
@@ -46,6 +36,26 @@ class MyAppState extends State<MyApp> {
                 elevation: 6,
               ),
             ),
+            Card(
+              elevation: 5,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  children: <Widget>[
+                    TextField(decoration: InputDecoration(label: Text('title'),),
+                    onChanged: (val) => inputtitle =val ,
+                    ),
+                    TextField(decoration: InputDecoration(label: Text('amount'),),
+                      onChanged: (val) => inputamount =val ,
+                    ),
+                    TextButton(onPressed:(){
+                      print(inputtitle);
+                      print(inputamount);
+                    },child: Text('Add Transactions',style: TextStyle(color: Colors.purpleAccent)),),
+                  ],
+                ),
+              ),
+            ),
             Column(
               children: Transactions.map((tx) {
                 return Card(
@@ -53,23 +63,36 @@ class MyAppState extends State<MyApp> {
                     children: <Widget>[
                       Container(
                         padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
-                        decoration: BoxDecoration(border: Border.all(color: Colors.black,width: 2),),
-
-                        child: Text(tx.amount.toString()),
-
+                        margin:
+                        EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.purple, width: 2),
+                        ),
+                        child: Text('\$${tx.amount}',
+                            style: TextStyle(
+                                color: Colors.purpleAccent,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                        ),
                       ),
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(tx.Title),
-                          Text(tx.date.toString()),
+                          Text(
+                            tx.Title,
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(DateFormat.yMMMd().format(tx.date),
+                            style: TextStyle(color: Colors.grey),),
                         ],
                       ),
                     ],
                   ),
                 );
               }).toList(),
-            )
+            ),
           ],
         ),
       ),
