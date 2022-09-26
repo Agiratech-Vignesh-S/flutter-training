@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.purple,
           accentColor: Colors.amber,
           fontFamily: 'Quicksand',
+          // ignore: prefer_const_constructors
           appBarTheme: AppBarTheme(
+              // ignore: prefer_const_constructors
               titleTextStyle: TextStyle(
                   fontFamily: 'OpenSans',
                   fontSize: 20,
