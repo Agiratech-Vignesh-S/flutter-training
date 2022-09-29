@@ -28,20 +28,20 @@ class _NewTransactionState extends State<NewTransaction> {
       return;
     }
 
-    widget.addTx(
+    widget.addTx(  //
       enteredTitle,
       enteredAmount,
       _selectedDate,
     );
 
-    Navigator.of(context).pop();
+    Navigator.of(context).pop();   //
   }
 
   void _presentDatePicker() {
     showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(2019),
+      firstDate: DateTime(2020),
       lastDate: DateTime.now(),
     ).then((pickedDate) {
       if (pickedDate == null) {
@@ -118,3 +118,4 @@ class _NewTransactionState extends State<NewTransaction> {
     );
   }
 }
+
