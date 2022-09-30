@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class Myapp extends StatelessWidget {
@@ -14,6 +16,7 @@ class Myapp extends StatelessWidget {
     );
   }
 }
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
@@ -24,8 +27,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return ();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('meals app'),
+      ),
+      body: Center(
+        child: Text('time'),
+      ),
+    );
   }
 }
-
-
