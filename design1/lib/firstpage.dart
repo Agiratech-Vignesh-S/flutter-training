@@ -12,6 +12,7 @@ class _MyAppState extends State<Firstpage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -77,7 +78,7 @@ class _MyAppState extends State<Firstpage> {
                     const Icon(Icons.my_location),
                     TextButton(
                       onPressed: () {},
-                      child: Text('Use my current location'),
+                      child: const Text('Use my current location'),
                     ),
                   ],
                 )),

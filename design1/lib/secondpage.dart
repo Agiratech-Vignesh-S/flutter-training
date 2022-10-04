@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'firstpage.dart';
 
 List<String> countries = <String>['New York', 'India', 'USA', 'Norway'];
 
@@ -15,12 +16,15 @@ class _MyAppState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
-            // Navigator.push(context, MaterialPageRoute(builder: (context)=>MyApp()));
-          },),
+          leading: IconButton(icon: const Icon(Icons.arrow_back),onPressed: (){
+             Navigator.push(context, MaterialPageRoute(builder: (context)=>Firstpage()));
+          },
+          color: Colors.black,
+          ),
           backgroundColor: Colors.white,
           elevation: 0,
         ),
@@ -44,14 +48,14 @@ class _MyAppState extends State<SecondScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 10, bottom: 20),
+                      padding: const EdgeInsets.only(left: 10, bottom: 20),
                       child: Container(
                         width: 150,
                         child: DropdownButton<String>(
                           value: dropdownValue,
                           icon: Icon(Icons.keyboard_arrow_down),
-                          elevation: 16,
-                          style: TextStyle(
+                          elevation: 10,
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
                               fontSize: 25),
@@ -95,37 +99,31 @@ class _MyAppState extends State<SecondScreen> {
             Column(
               children: [
                 Card(
-                  elevation: 15,
+                  elevation: 10,
                   child: Container(
                     width: double.infinity,
                     child: Row(
                       children: [
                         Card(
 
-                         // elevation: 10,
-                          // width: 150,
-                          // height: 140,
-                          child: Container(
-                            // width: 200,
-                            child: Positioned.fill(
-                              // top: 20,
-                              // right: 10,
-                              child: Stack(
-                                children: [
-                                  Container(
-                                    width: 100,
-                                    child: Image(
-                                        image:
-                                            AssetImage("assets/sam.jpg")),
-                                  ),
-                                  Container(
-                                    width: 100,
-                                    child: Align(
-                                        alignment: Alignment.topRight,
-                                        child: Card(child: Text("Free"))),
-                                  )
-                                ],
-                              ),
+                          child: Positioned.fill(
+                            // top: 20,
+                            // right: 10,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: 100,
+                                  child: const Image(
+                                      image:
+                                          AssetImage("assets/sam.jpg")),
+                                ),
+                                Container(
+                                  width: 100,
+                                  child: const Align(
+                                      alignment: Alignment.topRight,
+                                      child: Card(child: Text("Free"))),
+                                )
+                              ],
                             ),
                           ),
                         ),
@@ -145,7 +143,7 @@ class _MyAppState extends State<SecondScreen> {
                                 children: [
                                   Container(
                                     // padding: EdgeInsets.only(l),
-                                    child: Text(
+                                    child: const Text(
                                       "Katra",
                                       style: TextStyle(
                                           fontSize: 10, color: Colors.blue),
@@ -191,13 +189,13 @@ class _MyAppState extends State<SecondScreen> {
                                 children: [
                                   Container(
                                     width: 100,
-                                    child: Image(
+                                    child: const Image(
                                         image:
                                         AssetImage("assets/sam.jpg")),
                                   ),
                                   Container(
                                     width: 100,
-                                    child: Align(
+                                    child: const Align(
                                         alignment: Alignment.topRight,
                                         child: Card(child: Text("Free"))),
                                   )
@@ -215,23 +213,20 @@ class _MyAppState extends State<SecondScreen> {
                               Title(
                                   color: Colors.black,
                                   child:
-                                  Text("Certified saturday #1 party in New York")),
+                                  const Text("Certified saturday #1 party in New York")),
 
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Container(
-                                    // padding: EdgeInsets.only(l),
-                                    child: Text(
-                                      "Katra",
-                                      style: TextStyle(
-                                          fontSize: 10, color: Colors.blue),
-                                    ),
+                                  const Text(
+                                    "Katra",
+                                    style: TextStyle(
+                                        fontSize: 10, color: Colors.blue),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 110),
                                     child: IconButton(
-                                        icon: Icon(Icons.favorite_rounded),
+                                        icon: const Icon(Icons.favorite_rounded),
                                         onPressed: () {}),
                                   ),
                                   IconButton(
