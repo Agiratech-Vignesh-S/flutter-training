@@ -23,22 +23,26 @@ class _Settings_chatState extends State<Settings_chat> {
     });
   }
 
-  // double? fontsize=10;
-  // double? font(){
-  //   print(result);
-  //   if(result=="small"){
-  //     print("vfvsdvdf");
-  //     fontsize=10;
-  //   }
-  //   else if(result =="medium"){
-  //     print("vfvsdv");
-  //     fontsize=25;
-  //   }else{
-  //     print("fvdsd");
-  //     fontsize=35;
-  //   }
-  //   return fontsize;
-  // }
+  double? fontsize=10;
+  double? font(){
+    print(result);
+    if(result=="small"){
+      setState(() {
+        fontsize=10;
+      });
+      print("vfvsdvdf");
+    }
+    else if(result =="medium"){
+      setState(() {
+        fontsize=10;
+      });
+    }else{
+      setState(() {
+        fontsize=10;
+      });
+    }
+    return fontsize;
+  }
 
 
 
@@ -200,7 +204,7 @@ class _Settings_chatState extends State<Settings_chat> {
                   ),
                   subtitle: RichText(
                     text: TextSpan
-                      (text: ('$result').toString(),style: TextStyle(fontSize:15,color: Colors.black,)),
+                      (text: ('$result').toString(),style: TextStyle(fontSize:font(),color: Colors.black,)),
                   ),
                 ),
       ),

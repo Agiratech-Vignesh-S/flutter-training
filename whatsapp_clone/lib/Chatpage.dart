@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/Message_Page.dart';
 
 class Chatpage extends StatefulWidget {
   const Chatpage({Key? key}) : super(key: key);
@@ -18,6 +19,10 @@ class _ChatpageState extends State<Chatpage> {
                 itemCount: chatdata.length,
                 itemBuilder: (context,i)=>
                 ListTile(
+                  onTap: (){
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => Message_page()));
+                  },
                   leading: Container(
                     height: 100,
                      width: 50,
@@ -59,17 +64,19 @@ class Chatlist {
       required this.date,
       required this.pic,
         required this.subtitle1,
-      required this.icon,});
-}
+      required this.icon,
 
+      });
+}
 List<Chatlist> chatdata = [
+
   Chatlist(
       title: "Person 1",
       subtitle: "type.....",
       date: "3/4/22",
       pic: 'assets/images/img.jpg',
        subtitle1: '6 October,12:09 pm ',
-       icon: Icon(Icons.phone)
+       icon: Icon(Icons.phone,color: Colors.green,)
   ),
 
 
@@ -79,7 +86,7 @@ List<Chatlist> chatdata = [
       date: "4/6/22",
       pic: 'assets/images/Art.png',
       subtitle1: '1 October,10:09 pm ',
-      icon: Icon(Icons.videocam_rounded)
+      icon: Icon(Icons.videocam_rounded,color: Colors.green,)
   ),
   Chatlist(
       title: "Person 3",
@@ -87,7 +94,7 @@ List<Chatlist> chatdata = [
       date: "8/5/22",
       pic: 'assets/images/flower.jpg',
       subtitle1: '6 October,12:09 pm ',
-      icon: Icon(Icons.phone)
+      icon: Icon(Icons.phone,color: Colors.green,)
   ),
   Chatlist(
       title: "Person 4",
@@ -95,7 +102,7 @@ List<Chatlist> chatdata = [
       date: "3/4/22",
       pic: 'assets/images/sun.jpg',
      subtitle1: '1 October,10:09 pm ',
-icon: Icon(Icons.videocam_rounded)
+icon: Icon(Icons.videocam_rounded,color: Colors.green,)
 ),
   Chatlist(
       title: "Person 5",
@@ -103,14 +110,16 @@ icon: Icon(Icons.videocam_rounded)
       date: "3/4/22",
       pic: 'assets/images/Art.png',
       subtitle1: '6 October,12:09 pm ',
-      icon: Icon(Icons.phone)),
+      icon: Icon(Icons.phone,color: Colors.green,)
+  ),
+
   Chatlist(
       title: "Person 6",
       subtitle: "type.....",
       date: "3/4/22",
       pic: 'assets/images/sun.jpg',
       subtitle1: '1 October,10:09 pm ',
-      icon: Icon(Icons.videocam_rounded)
+      icon: Icon(Icons.videocam_rounded,color: Colors.green,)
   ),
   Chatlist(
       title: "Person 7",
@@ -118,5 +127,6 @@ icon: Icon(Icons.videocam_rounded)
       date: "3/4/22",
       pic: 'assets/images/flower.jpg',
       subtitle1: '6 October,12:09 pm ',
-      icon: Icon(Icons.phone)),
+      icon: Icon(Icons.phone,color: Colors.green,)
+  ),
 ];

@@ -21,7 +21,7 @@ void Changes(dynamic? value){
           appBar: AppBar(backgroundColor: Colors.green,
              title: Text("Status privacy"),
              leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
-              // Navigator.pop(context);
+              Navigator.pop(context);
   },),
 ),
       body: Column(

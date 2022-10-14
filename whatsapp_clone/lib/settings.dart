@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/Settings/Help.dart';
+import 'package:whatsapp_clone/Settings/Profile.dart';
 import 'package:whatsapp_clone/Settings/Settings_chat.dart';
 import 'package:whatsapp_clone/Settings/Settings_notification.dart';
 import 'package:whatsapp_clone/Settings/Settings_storage.dart';
@@ -141,6 +142,7 @@ class _SettingsState extends State<Settings> {
               Expanded(
                 child: ListTile(
                   onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile()));
                   },
                   leading: Container(
                     child: ClipRRect(
@@ -152,7 +154,7 @@ class _SettingsState extends State<Settings> {
                     "Person 1",
                     style: TextStyle(fontWeight: FontWeight.w600),
                   ),
-                  subtitle: const Text("typfjkvbdfjbvsdfb bjbe....."),
+                  subtitle: const Text("Available"),
                   trailing: const Icon(
                     Icons.qr_code,
                     color: Colors.green,
@@ -255,7 +257,7 @@ class _SettingsState extends State<Settings> {
                   return Bottomsheet(context);
                   },
                   leading: const Icon(
-                    Icons.settings_input_svideo_rounded,
+                    Icons.language,
                     size: 30,
                   ),
                   title: const Text(

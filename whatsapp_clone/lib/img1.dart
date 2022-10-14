@@ -23,15 +23,3 @@ class img1 extends StatelessWidget {
     );
   }
 }
-/*Class dialogBox{
-required onPressed();
-void showDialogBox(){
-button:(){
-widget.onPressed(){}
-}
-}
-}
-
-Future.delayed(duration:Duration(5),_goback);
-*\
- */

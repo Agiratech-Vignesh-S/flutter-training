@@ -133,7 +133,7 @@ class _ChatsState extends State<Chats> {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (BuildContext context) => const Settings()));
                   }else{
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    Navigator.of(context).push(MaterialPageRoute(
                         builder: (BuildContext context) =>  Status_privacy()));
                   }
                 },
