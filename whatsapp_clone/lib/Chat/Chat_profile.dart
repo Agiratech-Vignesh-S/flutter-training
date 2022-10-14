@@ -82,10 +82,14 @@ class _Chat_profileState extends State<Chat_profile> {
                           const SizedBox(width: 30,),
                           IconButton(onPressed: (){}, icon: const Icon(Icons.videocam_rounded,size: 40,color: Colors.green,)),
                           const SizedBox(width: 30,),
-                          CircleAvatar(
-                            backgroundColor: Colors.green,
-                              child:
-                          FittedBox(child: IconButton(onPressed: (){}, icon: const Icon(Icons.currency_rupee,size: 33,color: Colors.white,)))),
+                          Container(
+                            height: 33,
+                            width: 33,
+                            child: CircleAvatar(
+                              backgroundColor: Colors.green,
+                                child:
+                            FittedBox(child: IconButton(onPressed: (){}, icon: const Icon(Icons.currency_rupee,size: 33,color: Colors.white,)))),
+                          ),
                           const SizedBox(width: 30,),
                           IconButton(onPressed: (){}, icon: const Icon(Icons.search_rounded,size: 40,color: Colors.green,)),
                         ],

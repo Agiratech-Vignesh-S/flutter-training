@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/Calls/Add_calls.dart';
 
-import 'Chatpage.dart';
+import '../Chat/Chatpage.dart';
+
 
 class Calls extends StatefulWidget {
   const Calls({Key? key}) : super(key: key);
@@ -43,11 +45,11 @@ class _CallsState extends State<Calls> {
 
 
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>Add_calls()));
+        },
         backgroundColor: Colors.green,
-        child: const Icon(
-          Icons.chat,
-        ),
+        child: Icon( Icons.add_ic_call ,color: Colors.white,),
       ),
     );
   }

@@ -4,7 +4,7 @@ import 'package:whatsapp_clone/Settings/Profile.dart';
 import 'package:whatsapp_clone/Settings/Settings_chat.dart';
 import 'package:whatsapp_clone/Settings/Settings_notification.dart';
 import 'package:whatsapp_clone/Settings/Settings_storage.dart';
-import 'Chats.dart';
+import 'Home.dart';
 
 import 'Settings/Account.dart';
 

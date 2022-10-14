@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/Chat_profile.dart';
+import 'package:whatsapp_clone/Chat/Chat_profile.dart';
 
 class Message_page extends StatelessWidget {
   const Message_page({Key? key}) : super(key: key);

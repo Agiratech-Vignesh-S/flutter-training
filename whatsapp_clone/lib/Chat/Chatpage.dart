@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/Message_Page.dart';
+import 'package:whatsapp_clone/Chat/Chat_NewMessage.dart';
+import 'package:whatsapp_clone/Chat/Message_Page.dart';
 
 class Chatpage extends StatefulWidget {
   const Chatpage({Key? key}) : super(key: key);
@@ -40,7 +41,9 @@ class _ChatpageState extends State<Chatpage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+         Navigator.push(context, MaterialPageRoute(builder: (context)=>Chat_NewMessage()));
+        },
         backgroundColor: Colors.green,
         child: const Icon(
           Icons.chat,
@@ -57,6 +60,8 @@ class Chatlist {
   final String pic;
   final String subtitle1;
   final Widget icon;
+  final Widget icon1;
+  final Widget icon2;
 
   Chatlist(
       {required this.title,
@@ -65,6 +70,8 @@ class Chatlist {
       required this.pic,
         required this.subtitle1,
       required this.icon,
+        required  this.icon1,
+        required this.icon2
 
       });
 }
@@ -72,61 +79,72 @@ List<Chatlist> chatdata = [
 
   Chatlist(
       title: "Person 1",
-      subtitle: "type.....",
+      subtitle: "Person 1",
       date: "3/4/22",
       pic: 'assets/images/img.jpg',
        subtitle1: '6 October,12:09 pm ',
-       icon: Icon(Icons.phone,color: Colors.green,)
+       icon: Icon(Icons.phone,color: Colors.green,),
+       icon1: Icon(Icons.phone,color: Colors.green,),
+       icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
   ),
-
-
   Chatlist(
       title: "Person 2",
-      subtitle: "type.....",
+      subtitle: "Person 2",
       date: "4/6/22",
       pic: 'assets/images/Art.png',
       subtitle1: '1 October,10:09 pm ',
-      icon: Icon(Icons.videocam_rounded,color: Colors.green,)
+      icon: Icon(Icons.videocam_rounded,color: Colors.green,),
+      icon1: Icon(Icons.phone,color: Colors.green,),
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
   ),
   Chatlist(
       title: "Person 3",
-      subtitle: "type.....",
+      subtitle: "Person 3",
       date: "8/5/22",
       pic: 'assets/images/flower.jpg',
       subtitle1: '6 October,12:09 pm ',
-      icon: Icon(Icons.phone,color: Colors.green,)
+      icon: Icon(Icons.phone,color: Colors.green,),
+      icon1: Icon(Icons.phone,color: Colors.green,),
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
   ),
   Chatlist(
       title: "Person 4",
-      subtitle: "type.....",
+      subtitle: "Person 4",
       date: "3/4/22",
       pic: 'assets/images/sun.jpg',
      subtitle1: '1 October,10:09 pm ',
-icon: Icon(Icons.videocam_rounded,color: Colors.green,)
+icon: Icon(Icons.videocam_rounded,color: Colors.green,),
+      icon1: Icon(Icons.phone,color: Colors.green,),
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
 ),
   Chatlist(
       title: "Person 5",
-      subtitle: "type.....",
+      subtitle: "Person 5",
       date: "3/4/22",
       pic: 'assets/images/Art.png',
       subtitle1: '6 October,12:09 pm ',
-      icon: Icon(Icons.phone,color: Colors.green,)
+      icon: Icon(Icons.phone,color: Colors.green,),
+      icon1: Icon(Icons.phone,color: Colors.green,),
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
   ),
-
   Chatlist(
       title: "Person 6",
-      subtitle: "type.....",
+      subtitle: "Person 6",
       date: "3/4/22",
       pic: 'assets/images/sun.jpg',
       subtitle1: '1 October,10:09 pm ',
-      icon: Icon(Icons.videocam_rounded,color: Colors.green,)
+      icon: Icon(Icons.videocam_rounded,color: Colors.green,),
+      icon1: Icon(Icons.phone,color: Colors.green,),
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
   ),
   Chatlist(
       title: "Person 7",
-      subtitle: "type.....",
+      subtitle: "Person 7",
       date: "3/4/22",
       pic: 'assets/images/flower.jpg',
       subtitle1: '6 October,12:09 pm ',
-      icon: Icon(Icons.phone,color: Colors.green,)
+      icon: Icon(Icons.phone,color: Colors.green,),
+      icon1: Icon(Icons.phone,color: Colors.green,),
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
   ),
 ];

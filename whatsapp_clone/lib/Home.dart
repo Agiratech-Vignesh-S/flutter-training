@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/Calls.dart';
+import 'package:whatsapp_clone/Calls/Calls.dart';
+import 'package:whatsapp_clone/Chat/Linked_devices.dart';
+import 'package:whatsapp_clone/Chat/New_group.dart';
+import 'package:whatsapp_clone/Chat/Payments.dart';
+import 'package:whatsapp_clone/Chat/Starred_messages.dart';
+import 'package:whatsapp_clone/Search.dart';
 import 'package:whatsapp_clone/Settings/Status_privacy.dart';
 import 'package:whatsapp_clone/Status.dart';
 import 'package:whatsapp_clone/settings.dart';
-import 'Chatpage.dart';
+import 'Chat/Chatpage.dart';
+import 'package:whatsapp_clone/Chat/Broadcast.dart';
+
 
 class Chats extends StatefulWidget {
   const Chats({Key? key}) : super(key: key);
@@ -54,11 +61,13 @@ class _ChatsState extends State<Chats> {
           appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.green,
-            title: const Text("WhatsApp UI Clone"),
+            title: const Text("WhatsApp"),
             actions: <Widget>[
               IconButton(
                 icon: const Icon(Icons.search),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Search()));
+                },
               ),
 
               currentindex ==1 ?  PopupMenuButton
@@ -67,6 +76,21 @@ class _ChatsState extends State<Chats> {
                     if (value == 6) {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (BuildContext context) => const Settings()));
+                    }else if(value==1){
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (BuildContext context) => const New_group()));
+                    }else if(value==2){
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (BuildContext context) => const Boradcast()));
+                    }else if(value==3){
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (BuildContext context) => const Linked_devices()));
+                    }else if(value==4){
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (BuildContext context) => const Starred_messages()));
+                    }else if(value==5){
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (BuildContext context) => const Payments()));
                     }
                   },
                   icon: const Icon(Icons.more_vert),

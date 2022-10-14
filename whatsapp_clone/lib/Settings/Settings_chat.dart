@@ -18,7 +18,6 @@ class _Settings_chatState extends State<Settings_chat> {
 
   void Changes(dynamic? value){
     setState(() {
-      print("vdz");
       result=value;
     });
   }
@@ -30,7 +29,6 @@ class _Settings_chatState extends State<Settings_chat> {
       setState(() {
         fontsize=10;
       });
-      print("vfvsdvdf");
     }
     else if(result =="medium"){
       setState(() {

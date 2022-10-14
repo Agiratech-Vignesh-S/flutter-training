@@ -17,38 +17,34 @@ class Profile extends StatelessWidget {
       Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Expanded(
-            child: ListView(
+          ListTile(
+            title: Center(
+            child: Stack(
+              alignment: Alignment.bottomRight,
               children: [
-                Center(
-                child: Stack(
-                  alignment: Alignment.bottomRight,
-                  children: [
-                    Container(
-                  padding: EdgeInsets.only(top: 20,left: 10),
-                    height: 200,
-                    width: 200,
-                    child: Center(
-                      child: ClipRRect(
-                        child: Image.asset('assets/images/img.jpg'),
-                        borderRadius: BorderRadius.circular(150),
-                      ),
-                    ),
+                Container(
+              padding: EdgeInsets.only(top: 20,left: 10),
+                height: 200,
+                width: 200,
+                child: Center(
+                  child: ClipRRect(
+                    child: Image.asset('assets/images/img.jpg'),
+                    borderRadius: BorderRadius.circular(150),
                   ),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius:
-                          BorderRadius.circular(30)),
-                      child: Icon(Icons.camera_alt,color: Colors.white,),
-                    )
-                ],
                 ),
               ),
-            ]
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius:
+                      BorderRadius.circular(30)),
+                  child: Icon(Icons.camera_alt,color: Colors.white,),
+                )
+            ],
             ),
+            )
           ),
           ListTile(
             onTap: () {
