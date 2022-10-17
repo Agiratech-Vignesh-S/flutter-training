@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/Settings/Help.dart';
+import 'package:whatsapp_clone/Settings/Invite.dart';
 import 'package:whatsapp_clone/Settings/Profile.dart';
 import 'package:whatsapp_clone/Settings/Settings_chat.dart';
 import 'package:whatsapp_clone/Settings/Settings_notification.dart';
@@ -110,9 +111,6 @@ class _SettingsState extends State<Settings> {
                   title: const Text("English"),
                   onTap: () => Navigator.of(context).pop(),
                 ),
-
-
-
               ],
             ),
           ),
@@ -151,7 +149,7 @@ class _SettingsState extends State<Settings> {
                     ),
                   ),
                   title: const Text(
-                    "Person 1",
+                    "Mass madhan",
                     style: TextStyle(fontWeight: FontWeight.w600),
                   ),
                   subtitle: const Text("Available"),
@@ -290,10 +288,12 @@ class _SettingsState extends State<Settings> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children:  [
               Expanded(
                 child: ListTile(
-                  onTap: null,
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Invite()));
+                  },
                   leading: Icon(
                     Icons.people,
                     size: 30,

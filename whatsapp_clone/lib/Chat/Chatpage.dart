@@ -62,6 +62,7 @@ class Chatlist {
   final Widget icon;
   final Widget icon1;
   final Widget icon2;
+  final String number;
 
   Chatlist(
       {required this.title,
@@ -71,80 +72,93 @@ class Chatlist {
         required this.subtitle1,
       required this.icon,
         required  this.icon1,
-        required this.icon2
+        required this.icon2,
+        required this.number
 
       });
-}
+  @override
+  String toString() {
+    return this.title;
+  }
+ }
+
 List<Chatlist> chatdata = [
 
   Chatlist(
-      title: "Person 1",
-      subtitle: "Person 1",
+      title: "Mass madhan ",
+      subtitle: "Hai",
       date: "3/4/22",
       pic: 'assets/images/img.jpg',
        subtitle1: '6 October,12:09 pm ',
        icon: Icon(Icons.phone,color: Colors.green,),
        icon1: Icon(Icons.phone,color: Colors.green,),
-       icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
+       icon2: Icon(Icons.videocam_rounded,color: Colors.green,),
+       number: "94736 34343"
   ),
   Chatlist(
-      title: "Person 2",
-      subtitle: "Person 2",
+      title: "Praveen",
+      subtitle: "hello",
       date: "4/6/22",
       pic: 'assets/images/Art.png',
       subtitle1: '1 October,10:09 pm ',
       icon: Icon(Icons.videocam_rounded,color: Colors.green,),
       icon1: Icon(Icons.phone,color: Colors.green,),
-      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,),
+      number: "94736 39843"
   ),
   Chatlist(
-      title: "Person 3",
-      subtitle: "Person 3",
+      title: "vignesh",
+      subtitle: "welcome",
       date: "8/5/22",
       pic: 'assets/images/flower.jpg',
       subtitle1: '6 October,12:09 pm ',
       icon: Icon(Icons.phone,color: Colors.green,),
       icon1: Icon(Icons.phone,color: Colors.green,),
-      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,),
+      number: "83536 34343"
   ),
   Chatlist(
-      title: "Person 4",
-      subtitle: "Person 4",
+      title: "mukunthan",
+      subtitle: "Hai....",
       date: "3/4/22",
       pic: 'assets/images/sun.jpg',
      subtitle1: '1 October,10:09 pm ',
 icon: Icon(Icons.videocam_rounded,color: Colors.green,),
       icon1: Icon(Icons.phone,color: Colors.green,),
-      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,),
+      number: "94734 34343"
 ),
   Chatlist(
-      title: "Person 5",
-      subtitle: "Person 5",
+      title: "surya",
+      subtitle: "hello..",
       date: "3/4/22",
       pic: 'assets/images/Art.png',
       subtitle1: '6 October,12:09 pm ',
       icon: Icon(Icons.phone,color: Colors.green,),
       icon1: Icon(Icons.phone,color: Colors.green,),
-      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,),
+      number: "94736 34343"
   ),
   Chatlist(
-      title: "Person 6",
-      subtitle: "Person 6",
+      title: "Ram",
+      subtitle: "Welcome...",
       date: "3/4/22",
       pic: 'assets/images/sun.jpg',
       subtitle1: '1 October,10:09 pm ',
       icon: Icon(Icons.videocam_rounded,color: Colors.green,),
       icon1: Icon(Icons.phone,color: Colors.green,),
-      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,),
+      number: "94736 39843"
   ),
   Chatlist(
-      title: "Person 7",
-      subtitle: "Person 7",
+      title: "Raja",
+      subtitle: "Hiii....",
       date: "3/4/22",
       pic: 'assets/images/flower.jpg',
       subtitle1: '6 October,12:09 pm ',
       icon: Icon(Icons.phone,color: Colors.green,),
       icon1: Icon(Icons.phone,color: Colors.green,),
-      icon2: Icon(Icons.videocam_rounded,color: Colors.green,)
+      icon2: Icon(Icons.videocam_rounded,color: Colors.green,),
+      number: "94736 39843"
   ),
 ];

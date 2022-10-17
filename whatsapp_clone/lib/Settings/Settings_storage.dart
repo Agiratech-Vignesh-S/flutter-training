@@ -15,7 +15,7 @@ class _Settings_storageState extends State<Settings_storage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Notification"),
+        title: const Text("Storage and data"),
         backgroundColor: Colors.green,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

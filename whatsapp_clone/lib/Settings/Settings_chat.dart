@@ -2,48 +2,29 @@ import 'package:flutter/material.dart';
 
 import 'package:whatsapp_clone/settings.dart';
 
-
-
 class Settings_chat extends StatefulWidget {
   @override
   State<Settings_chat> createState() => _Settings_chatState();
 }
+
 class _Settings_chatState extends State<Settings_chat> {
-  bool tag1=false;
-  bool tag2=false;
-  bool tag3=false;
+  bool tag1 = false;
+  bool tag2 = false;
+  bool tag3 = false;
 
+  String result = "small";
+  String result1 = "System defalt";
 
-  dynamic? result ="small";
-
-  void Changes(dynamic? value){
+  void Changes(dynamic? value) {
     setState(() {
-      result=value;
+      result = value;
     });
   }
-
-  double? fontsize=10;
-  double? font(){
-    print(result);
-    if(result=="small"){
-      setState(() {
-        fontsize=10;
-      });
-    }
-    else if(result =="medium"){
-      setState(() {
-        fontsize=10;
-      });
-    }else{
-      setState(() {
-        fontsize=10;
-      });
-    }
-    return fontsize;
+  void Changes1(dynamic? value) {
+    setState(() {
+      result1 = value;
+    });
   }
-
-
-
 
   Future<void> _dialogBuilder(BuildContext context) {
     return showDialog<void>(
@@ -56,26 +37,122 @@ class _Settings_chatState extends State<Settings_chat> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ListTile(
-                  onTap:()=> Navigator.pop(context),
-                  title: Text("small"),
-                    leading: Radio(value: "Small", groupValue: result, onChanged: (value)=>Changes(value))),
-                SizedBox(width: 10.0,),
+                    onTap: () => Navigator.pop(context),
+                    title: const Text("small"),
+                    leading: Radio(
+                      value: "Small",
+                      groupValue: result,
+                      onChanged: (value) {
+                        Navigator.pop(context);
+                        Changes(value);
+                      },
+                      activeColor: Colors.green,
+                      hoverColor: Colors.green,
+                    )),
+                const SizedBox(
+                  width: 10.0,
+                ),
                 ListTile(
-                    onTap:()=> Navigator.pop(context),
-                  title: Text("medium"),
-                    leading: Radio(value: "Medium", groupValue: result, onChanged: (value)=>Changes(value))),
-                SizedBox(width: 10.0,),
+                    onTap: () => Navigator.pop(context),
+                    title: const Text("medium"),
+                    leading: Radio(
+                        value: "Medium",
+                        groupValue: result,
+                        onChanged: (value) {
+                          Changes(value);
+                          Navigator.pop(context);
+                        },
+                      activeColor: Colors.green,
+                      hoverColor: Colors.green,
+                    )),
+                const SizedBox(
+                  width: 10.0,
+                ),
                 ListTile(
-                    onTap:()=> Navigator.pop(context),
-                  title: Text("Large"),
-                    leading: Radio(value: "Large", groupValue: result, onChanged: (value)=>Changes(value))),
-                SizedBox(width: 10.0,),
-
-
+                    onTap: () => Navigator.pop(context),
+                    title: const Text("Large"),
+                    leading: Radio(
+                        value: "Large",
+                        groupValue: result,
+                        onChanged: (value) {
+                          Changes(value);
+                          Navigator.pop(context);
+                        },
+                      activeColor: Colors.green,
+                      hoverColor: Colors.green,
+                    )),
+                const SizedBox(
+                  width: 10.0,
+                ),
               ],
             )
           ],
+        );
+      },
+    );
+  }
 
+  Future<void> dialogBuilder1(BuildContext context) {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Theme"),
+          actions: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ListTile(
+                    onTap: () => Navigator.pop(context),
+                    title: const Text("System defalt"),
+                    leading: Radio(
+                      value: "System defalt",
+                      groupValue: result1,
+                      onChanged: (value) {
+                        Navigator.pop(context);
+                        Changes1(value);
+                      },
+                      activeColor: Colors.green,
+                      hoverColor: Colors.green,
+                    )),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                ListTile(
+                    onTap: () => Navigator.pop(context),
+                    title: const Text("Light"),
+                    leading: Radio(
+                        value: "Light",
+                        groupValue: result1,
+                        onChanged: (value) {
+                          Changes1(value);
+                          Navigator.pop(context);
+                        },
+                      activeColor: Colors.green,
+                      hoverColor: Colors.green,
+                        )),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                ListTile(
+                    onTap: () => Navigator.pop(context),
+                    title: const Text("Dark"),
+                    leading: Radio(
+                        value: "Dark",
+                        groupValue: result1,
+                        onChanged: (value) {
+                          Changes1(value);
+                          Navigator.pop(context);
+                        },
+                      activeColor: Colors.green,
+                      hoverColor: Colors.green,
+                        )),
+                const SizedBox(
+                  width: 10.0,
+                ),
+              ],
+            )
+          ],
         );
       },
     );
@@ -84,14 +161,14 @@ class _Settings_chatState extends State<Settings_chat> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBar(
-        title: Text("Chats"),
+      appBar: AppBar(
+        title: const Text("Chats"),
         backgroundColor: Colors.green,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Settings()));
+                context, MaterialPageRoute(builder: (context) => const Settings()));
           },
         ),
       ),
@@ -99,18 +176,20 @@ class _Settings_chatState extends State<Settings_chat> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.only(top: 20,left: 20,right: 20),
+            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             width: double.infinity,
             height: 40,
-            child: Text("Display",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),),
+            child: const Text(
+              "Display",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
                 child: ListTile(
-                  onTap: () {
-                  },
+                  onTap:()=> dialogBuilder1(context),
                   leading: const Icon(
                     Icons.brightness_medium,
                     size: 30,
@@ -119,11 +198,16 @@ class _Settings_chatState extends State<Settings_chat> {
                     "Theme",
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
-                  subtitle: Text("Dark"),
+                  subtitle: RichText(
+                    text: TextSpan(
+                        text: ('$result1').toString(),
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                        )),
+                  ),
                 ),
-
               ),
-
             ],
           ),
           Row(
@@ -131,8 +215,7 @@ class _Settings_chatState extends State<Settings_chat> {
             children: [
               Expanded(
                 child: ListTile(
-                  onTap: () {
-                  },
+                  onTap: () {},
                   leading: const Icon(
                     Icons.wallpaper_sharp,
                     size: 30,
@@ -142,37 +225,44 @@ class _Settings_chatState extends State<Settings_chat> {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                 ),
-
               ),
-
             ],
           ),
-          Divider(height: 3,),
+          const Divider(
+            height: 3,
+          ),
           Container(
-            padding: EdgeInsets.only(top: 20,left: 20,right: 20),
+            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             width: double.infinity,
             height: 40,
-            child: Text("Chat Settings",style: TextStyle(fontSize: 15),),
+            child: const Text(
+              "Chat Settings",
+              style: TextStyle(fontSize: 15),
+            ),
           ),
-        SwitchListTile(value:tag1,
-          onChanged: (value){
-            setState(() => tag1 = value);
-          },
-          activeColor: Colors.green,
-          secondary: Container(
-            //color: Colors.white,
-            width: 40,
-            height: 30,
+          SwitchListTile(
+            value: tag1,
+            onChanged: (value) {
+              setState(() => tag1 = value);
+            },
+            activeColor: Colors.green,
+            secondary: Container(
+              //color: Colors.white,
+              width: 40,
+              height: 30,
+            ),
+            title: const Text(
+              "Enter is send",
+              style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black),
+            ),
+            subtitle: const Text("Enter key will send your message"),
           ),
-          title: Text("Enter is send",style: TextStyle(fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: Colors.black),),
-        subtitle: Text("Enter key will send your message"),
-
-
-        ),
-          SwitchListTile(value:tag2,
-            onChanged: (value){
+          SwitchListTile(
+            value: tag2,
+            onChanged: (value) {
               setState(() => tag2 = value);
             },
             activeColor: Colors.green,
@@ -181,10 +271,14 @@ class _Settings_chatState extends State<Settings_chat> {
               width: 40,
               height: 30,
             ),
-            title: Text("Media visibility",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15,color: Colors.black),),
-            subtitle: Text("show newly downloanded media in your device's "),
-
-
+            title: const Text(
+              "Media visibility",
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                  color: Colors.black),
+            ),
+            subtitle: const Text("show newly downloanded media in your device's "),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -201,22 +295,32 @@ class _Settings_chatState extends State<Settings_chat> {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                   subtitle: RichText(
-                    text: TextSpan
-                      (text: ('$result').toString(),style: TextStyle(fontSize:font(),color: Colors.black,)),
+                    text: TextSpan(
+                        text: ('$result').toString(),
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                        )),
                   ),
                 ),
-      ),
+              ),
             ],
           ),
-          Divider(height: 3,),
+          const Divider(
+            height: 3,
+          ),
           Container(
-            padding: EdgeInsets.only(top: 20,left: 20,right: 20),
+            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             width: double.infinity,
             height: 40,
-            child: Text("Archived chats",style: TextStyle(fontSize: 15),),
+            child: const Text(
+              "Archived chats",
+              style: TextStyle(fontSize: 15),
+            ),
           ),
-          SwitchListTile(value:tag3,
-            onChanged: (value){
+          SwitchListTile(
+            value: tag3,
+            onChanged: (value) {
               setState(() => tag3 = value);
             },
             activeColor: Colors.green,
@@ -225,19 +329,25 @@ class _Settings_chatState extends State<Settings_chat> {
               width: 40,
               height: 30,
             ),
-            title: Text("Keep chats archived",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 15,color: Colors.black),),
-            subtitle: Text("Archived chats will remain archived when you recevie a new message"),
-
-
+            title: const Text(
+              "Keep chats archived",
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                  color: Colors.black),
+            ),
+            subtitle: const Text(
+                "Archived chats will remain archived when you recevie a new message"),
           ),
-          Divider(height: 2,),
+          const Divider(
+            height: 2,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
                 child: ListTile(
-                  onTap: () {
-                  },
+                  onTap: () {},
                   leading: const Icon(
                     Icons.cloud_upload_sharp,
                     size: 30,
@@ -247,9 +357,7 @@ class _Settings_chatState extends State<Settings_chat> {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                 ),
-
               ),
-
             ],
           ),
           Row(
@@ -257,8 +365,7 @@ class _Settings_chatState extends State<Settings_chat> {
             children: [
               Expanded(
                 child: ListTile(
-                  onTap: () {
-                  },
+                  onTap: () {},
                   leading: const Icon(
                     Icons.history,
                     size: 30,
@@ -268,19 +375,11 @@ class _Settings_chatState extends State<Settings_chat> {
                     style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                 ),
-
               ),
-
             ],
           ),
-
-
         ],
       ),
     );
   }
 }
-
-
-
-

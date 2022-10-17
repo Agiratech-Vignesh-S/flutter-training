@@ -77,7 +77,7 @@ class Status extends StatelessWidget {
                           )
                       ),
                     ),
-                    title: const Text("Person 3",
+                    title: const Text("Ram",
                       style: TextStyle(fontWeight: FontWeight.w600),),
                     subtitle: const Text("Today. 3:11 pm"),
                   ),
@@ -109,7 +109,7 @@ class Status extends StatelessWidget {
                           )
                       ),
                     ),
-                    title: const Text("Person 5",
+                    title: const Text("Raja",
                       style: TextStyle(fontWeight: FontWeight.w600),),
                     subtitle: const Text("Today. 4:11 pm"),
                   ),

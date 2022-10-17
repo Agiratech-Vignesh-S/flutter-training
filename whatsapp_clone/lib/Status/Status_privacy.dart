@@ -33,7 +33,6 @@ void Changes(dynamic? value){
             child: Text("who can see my status updates"),
           ),
           ListTile(
-              //onTap:()=> Navigator.pop(context),
               title: Text("My contacts",style: TextStyle(fontWeight: FontWeight.w400),),
               leading: Transform.scale(
                 scale: 1.0,
@@ -41,7 +40,6 @@ void Changes(dynamic? value){
                     value: 1, groupValue: result, onChanged: (value)=>Changes(value)),
               )),
           ListTile(
-              // onTap:()=> Navigator.pop(context),
               title: Text("My contacts expct...",style: TextStyle(fontWeight: FontWeight.w400),),
               leading: Transform.scale(
                 scale: 1.0,
@@ -49,7 +47,6 @@ void Changes(dynamic? value){
                     activeColor: Colors.green,value: 2, groupValue: result, onChanged: (value)=>Changes(value)),
               )),
           ListTile(
-              // onTap:()=> Navigator.pop(context),
               title: Text("Only Share wiht...",style: TextStyle(fontWeight: FontWeight.w400),),
               leading: Transform.scale(
                 scale: 1.0,

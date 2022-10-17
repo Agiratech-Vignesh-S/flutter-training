@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/Status.dart';
+import 'package:whatsapp_clone/Status/Status.dart';
 
 class img1 extends StatelessWidget {
   const img1({Key? key}) : super(key: key);

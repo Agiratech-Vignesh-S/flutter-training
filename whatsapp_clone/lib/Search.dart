@@ -15,7 +15,8 @@ class _SearchState extends State<Search> {
   void updatelist(String value) {
 setState(() {
   print("fwfs");
-  display_list=chatdata.where((element)=>element.date.toUpperCase().contains(value.toLowerCase())).toList();
+  display_list=chatdata.where((element)=>element.title.toLowerCase().contains(value.toLowerCase())).toList();
+  print(display_list.toString());
 });
   }
 
@@ -24,13 +25,13 @@ setState(() {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: IconButton(icon: Icon(Icons.arrow_back,color: Colors.black54,),onPressed: (){
+        leading: IconButton(icon: const Icon(Icons.arrow_back,color: Colors.black54,),onPressed: (){
           Navigator.pop(context);
         },),
         backgroundColor: Colors.white,
         title:  TextField(
           onChanged: (value)=>updatelist(value),
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
            enabledBorder: UnderlineInputBorder(
              borderSide: BorderSide(color: Colors.white)
            ),
@@ -43,7 +44,7 @@ setState(() {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,9 +65,9 @@ setState(() {
                   backgroundImage: AssetImage(chatdata[i].pic),
                 ),
               ),
-              title: Text(chatdata[i].title),
-              subtitle: Text(chatdata[i].subtitle),
-              trailing: Text(chatdata[i].date),
+              title: Text(display_list[i].title),
+              subtitle: Text(display_list[i].subtitle),
+              trailing: Text(display_list[i].date),
 
 
             )

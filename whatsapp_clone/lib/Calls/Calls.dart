@@ -35,10 +35,9 @@ class _CallsState extends State<Calls> {
                       ),
                       title: Text(chatdata[i].title),
                       subtitle: Text(chatdata[i].subtitle1),
-                      trailing: chatdata[i].icon,
-
-
-                    )),
+                      trailing: chatdata[i].icon1,
+                    )
+            ),
           )
         ],
       ),

@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/Settings/Account/Change_number.dart';
+import 'package:whatsapp_clone/Settings/Account/Delete_my_account.dart';
+import 'package:whatsapp_clone/Settings/Account/Privacy.dart';
+import 'package:whatsapp_clone/Settings/Account/Request_account.dart';
+import 'package:whatsapp_clone/Settings/Account/Security.dart';
+import 'package:whatsapp_clone/Settings/Account/Two-step%20verification.dart';
 
 import 'package:whatsapp_clone/settings.dart';
 
@@ -28,7 +34,7 @@ class Account extends StatelessWidget {
                 child: ListTile(
                   onTap: () {
                     Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => Account()));
+                        context, MaterialPageRoute(builder: (context) => Privacy()));
                   },
                   leading: const Icon(
                     Icons.lock,
@@ -49,7 +55,7 @@ class Account extends StatelessWidget {
                 child: ListTile(
                   onTap: () {
                     Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => Account()));
+                        context, MaterialPageRoute(builder: (context) => Security()));
                   },
                   leading: const Icon(
                     Icons.security_sharp,
@@ -70,7 +76,7 @@ class Account extends StatelessWidget {
                 child: ListTile(
                   onTap: () {
                     Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => Account()));
+                        context, MaterialPageRoute(builder: (context) => Two_step_verification()));
                   },
                   leading: const Icon(
                     Icons.more,
@@ -91,7 +97,7 @@ class Account extends StatelessWidget {
                 child: ListTile(
                   onTap: () {
                     Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => Account()));
+                        context, MaterialPageRoute(builder: (context) => Change_number()));
                   },
                   leading: const Icon(
                     Icons.phonelink_ring_outlined,
@@ -112,7 +118,7 @@ class Account extends StatelessWidget {
                 child: ListTile(
                   onTap: () {
                     Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => Account()));
+                        context, MaterialPageRoute(builder: (context) => Request_account()));
                   },
                   leading: const Icon(
                     Icons.insert_drive_file_sharp,
@@ -133,7 +139,7 @@ class Account extends StatelessWidget {
                 child: ListTile(
                   onTap: () {
                     Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => Account()));
+                        context, MaterialPageRoute(builder: (context) => Delete_my_account()));
                   },
                   leading: const Icon(
                     Icons.delete_sharp,

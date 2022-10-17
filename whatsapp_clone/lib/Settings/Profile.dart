@@ -60,7 +60,7 @@ class Profile extends StatelessWidget {
                   "Name",
                   style: TextStyle(fontWeight: FontWeight.w500),
                 ),
-                Text("person")
+                Text("Mass madhan")
               ],
             ),
             subtitle: Text("This is not your username or pin.this name will be visible to your whatsApp contacts.",style: TextStyle(fontSize: 10),),

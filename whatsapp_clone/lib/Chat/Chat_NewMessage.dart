@@ -13,9 +13,9 @@ class Chat_NewMessage extends StatelessWidget {
         title: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text("Select contact"),
-            const Text("7 contacts",style: TextStyle(fontSize: 10),)
+          children: const [
+            Text("Select contact"),
+            Text("7 contacts",style: TextStyle(fontSize: 10),)
           ],
         ),
         backgroundColor: Colors.green,
@@ -49,7 +49,7 @@ class Chat_NewMessage extends StatelessWidget {
                 ),
                 const PopupMenuItem(
                   value: 4,
-                  child: Text("",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                  child: Text("Help",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
                 ),
 
               ]
