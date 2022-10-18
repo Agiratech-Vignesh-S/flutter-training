@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/Chat/Chatpage.dart';
+import 'package:whatsapp_clone/List/Vibrate.dart';
 
 import 'package:whatsapp_clone/settings.dart';
 
@@ -13,7 +13,7 @@ class _Settings_notificationState extends State<Settings_notification> {
   bool tag2 = false;
   bool tag1 = false;
 
-  String? result = "Off";
+  String? result = "off";
 
   void Changes(dynamic? value) {
     setState(() {
@@ -28,31 +28,21 @@ class _Settings_notificationState extends State<Settings_notification> {
         return AlertDialog(
           title:  Text('Vibrate'),
           actions: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: ListView.builder(
-                      itemCount: chatdata.length,
-                      itemBuilder: (context, v) => ListTile(
-                          onTap: () => Navigator.pop(context),
+            Container(
+              height: 200,
+              width: 270,
+              child: ListView.builder(
+                  itemCount: Vibrate_value.length,
+                  itemBuilder: (context, v) =>
+
+                      RadioListTile(
                           title: Text(
-                            chatdata[v].title.toString(),
+                            Vibrate_value[v].title,
                           ),
-                          leading: Radio(
-                            value: chatdata[v].title.toString(),
-                            groupValue: result,
-                            onChanged: (value) {
-                              Navigator.pop(context);
-                              Changes(value);
-                            },
-                            activeColor: Colors.green,
-                            hoverColor: Colors.green,
-                          ))),
-                ),
-              ],
+                          value: Vibrate_value[v].title,
+                    groupValue: result,
+                      onChanged: (value) {Navigator.pop(context);Changes(value);}),
+              ),
             )
           ],
         );
@@ -164,9 +154,19 @@ class _Settings_notificationState extends State<Settings_notification> {
               title: Text("Notification tone"),
               subtitle: Text("Default"),
             ),
-            const ListTile(
+            ListTile(
+              onTap:()=> dialogBuilder1(context),
               title: Text("Vibrate"),
-              subtitle: Text("Off"),
+              subtitle:
+              RichText(
+                text: TextSpan(
+                  text: ('$result').toString(),
+                  style: const TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
             ),
             const ListTile(
               title: Text("Popup notification"),
@@ -213,9 +213,19 @@ class _Settings_notificationState extends State<Settings_notification> {
               title: Text("Ringtone"),
               subtitle: Text("Default"),
             ),
-            const ListTile(
+            ListTile(
+              onTap:()=> dialogBuilder1(context),
               title: Text("Vibrate"),
-              subtitle: Text("Off"),
+              subtitle:
+              RichText(
+                text: TextSpan(
+                  text: ('$result').toString(),
+                  style: const TextStyle(
+                    fontSize: 15,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
@@ -224,23 +234,3 @@ class _Settings_notificationState extends State<Settings_notification> {
   }
 }
 
-class Vibrate {
-  final String title;
-
-  Vibrate(this.title);
-
-  List<Vibrate> chatdata1 = [
-    Vibrate(
-      "OFF",
-    ),
-    Vibrate(
-      "Defalut",
-    ),
-    Vibrate(
-      "short",
-    ),
-    Vibrate(
-      "Long",
-    ),
-  ];
-}

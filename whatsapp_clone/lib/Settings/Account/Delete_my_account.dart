@@ -39,7 +39,7 @@ class _Delete_my_accountState extends State<Delete_my_account> {
         child: Column(
           children: [
             Container(
-              height: 550,
+              height: 600,
               child: Column(
                 children: [
                   const ListTile(
@@ -161,13 +161,9 @@ class _Delete_my_accountState extends State<Delete_my_account> {
                          ],
                        ),
                        SizedBox(height: 20,),
-                       // SizedBox(
-                       //   child: ElevatedButton(
-                       //     style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                       //     onPressed: (){}, child: Text("DELETE MY ACCOUNT"),),
-                       // )
-
-                     ],
+                       ElevatedButton(
+                         style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                         onPressed: (){}, child: Text("DELETE MY ACCOUNT"),)],
                    ),
                  ),
 

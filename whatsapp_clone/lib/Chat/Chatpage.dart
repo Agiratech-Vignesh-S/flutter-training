@@ -74,7 +74,6 @@ class Chatlist {
         required  this.icon1,
         required this.icon2,
         required this.number
-
       });
   @override
   String toString() {
