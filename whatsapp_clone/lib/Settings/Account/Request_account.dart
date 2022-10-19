@@ -39,18 +39,18 @@ class Request_account extends StatelessWidget {
             ),
             Container(
               height: 100,
-              child: Text("Create a report of your WhatsApp accout information and settings.which you can access or port to another app.this report does not include your messages.",style: TextStyle(fontSize: 15),),
+              child: const Text("Create a report of your WhatsApp accout information and settings.which you can access or port to another app.this report does not include your messages.",style: TextStyle(fontSize: 15),),
             ),
-            Divider(
+            const Divider(
               height: 3,
 
               color: Colors.black,
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.sticky_note_2_rounded,size: 30,color: Colors.black,),
               title: Text("Request report",style: TextStyle(color: Colors.black),),
             ),
-            Divider(
+            const Divider(
               height: 2,
               color: Colors.black,
             ),

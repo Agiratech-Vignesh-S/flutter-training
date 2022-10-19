@@ -22,7 +22,7 @@ class _ChatpageState extends State<Chatpage> {
                 ListTile(
                   onTap: (){
                     Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => Message_page()));
+                        context, MaterialPageRoute(builder: (context) => Message_Page()));
                   },
                   leading: Container(
                     height: 100,

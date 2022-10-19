@@ -73,24 +73,25 @@ class _ChatsState extends State<Chats> {
               currentindex ==1 ?  PopupMenuButton
                 (
                   onSelected: (value) {
-                    if (value == 6) {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (BuildContext context) => const Settings()));
-                    }else if(value==1){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    if(value==1){
+                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (BuildContext context) => const New_group()));
                     }else if(value==2){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (BuildContext context) => const Boradcast()));
                     }else if(value==3){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (BuildContext context) => const Linked_devices()));
                     }else if(value==4){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (BuildContext context) => const Starred_messages()));
                     }else if(value==5){
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (BuildContext context) => const Payments()));
+                    }
+                    else if (value == 6) {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) => const Settings()));
                     }
                   },
                   icon: const Icon(Icons.more_vert),

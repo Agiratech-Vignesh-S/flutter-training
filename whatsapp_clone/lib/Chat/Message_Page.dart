@@ -1,11 +1,16 @@
 import 'dart:math';
 
+import 'package:whatsapp_clone/Chat/Chat_page.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/Chat/Chat_profile.dart';
 
-class Message_page extends StatelessWidget {
-  const Message_page({Key? key}) : super(key: key);
+class Message_Page extends StatefulWidget {
+  @override
+  State<Message_Page> createState() => _Message_PageState();
+}
 
+class _Message_PageState extends State<Message_Page> {
+  // const Message_page({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +25,7 @@ class Message_page extends StatelessWidget {
         ),
         title: GestureDetector(
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>Chat_profile()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>const Chat_profile()));
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -39,11 +44,11 @@ class Message_page extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Mass Madhan",
                         style: TextStyle(fontSize: 20),
                       ),
-                      Text(
+                      const Text(
                         "online",
                         style: TextStyle(fontSize: 10),
                       ),
@@ -66,57 +71,78 @@ class Message_page extends StatelessWidget {
                 size: 30,
               )),
           PopupMenuButton(
-            onSelected: (value){
-              if(value==7){
+              onSelected: (value){
+                if(value==7){
+                  const PopupMenuItem(
+                    value: 1,
+                    child: Text("View contact",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                  );
+                  const PopupMenuItem(
+                    value: 2,
+                    child: Text("View contact",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                  );
+                }
+              },
+              icon: const Icon(Icons.more_vert_outlined),
+              iconSize: 30,
+              itemBuilder:(context)=> [
                 const PopupMenuItem(
                   value: 1,
                   child: Text("View contact",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                );
+                ),
                 const PopupMenuItem(
                   value: 2,
-                  child: Text("View contact",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-                );
-              }
-            },
-            icon: const Icon(Icons.more_vert_outlined),
-            iconSize: 30,
-            itemBuilder:(context)=> [
-              const PopupMenuItem(
-              value: 1,
-              child: Text("View contact",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-            ),
-              const PopupMenuItem(
-                value: 2,
-                child: Text("Media,links,and docs",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-              ),
-              const PopupMenuItem(
-                value: 3,
-                child: Text("Search",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-              ),
-              const PopupMenuItem(
-                value: 4,
-                child: Text("Mute notifications",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-              ),
-              const PopupMenuItem(
-                value: 5,
-                child: Text("Disappearing messages",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-              ),
-              const PopupMenuItem(
-                value: 6,
-                child: Text("Wallpaper",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
-              ),
-    ]
+                  child: Text("Media,links,and docs",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                ),
+                const PopupMenuItem(
+                  value: 3,
+                  child: Text("Search",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                ),
+                const PopupMenuItem(
+                  value: 4,
+                  child: Text("Mute notifications",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                ),
+                const PopupMenuItem(
+                  value: 5,
+                  child: Text("Disappearing messages",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                ),
+                const PopupMenuItem(
+                  value: 6,
+                  child: Text("Wallpaper",style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500),),
+                ),
+              ]
           ),
         ],
       ),
-      bottomSheet: Bottumbar(),
+      bottomSheet: Bottum_bar(),
+      body: Chat_page(),
+      backgroundColor: Colors.grey,
     );
   }
 }
 
-class Bottumbar extends StatelessWidget {
+class Bottum_bar extends StatefulWidget {
+  @override
+  State<Bottum_bar> createState() => _Bottum_barState();
+}
+
+class _Bottum_barState extends State<Bottum_bar> {
+  TextEditingController textController=TextEditingController();
+
+  void submitted(String value) {
+    final message =
+    Message(text: value, date: DateTime.now(), isSentByMe: true);
+    setState(() {
+      messages.add(message);
+      textController.text = '';
+    });
+    // print(textController.text);
+  }
+  bool sam=false;
+
   @override
   Widget build(BuildContext context) {
+
     return Container(
       height: 65,
       child: Row(
@@ -137,7 +163,14 @@ class Bottumbar extends StatelessWidget {
                 ),
                 Container(
                   width: 190,
-                  child: TextFormField(
+                  child: TextField(
+                    onChanged: (value){setState(() {
+                      textController.text.isNotEmpty?sam=true:sam=false;
+                    });},
+                    onSubmitted: (text) {
+                      submitted(text);
+                    },
+                    controller: textController,
                     style: const TextStyle(
                       fontSize: 19,
                     ),
@@ -166,9 +199,13 @@ class Bottumbar extends StatelessWidget {
               color: Colors.green,
             ),
             padding: const EdgeInsets.all(5),
-            child: IconButton(
-              icon: const Icon(Icons.mic),
-              onPressed: () {},
+            child: Center(
+              child: IconButton(
+                icon:  Icon(sam?Icons.send:Icons.mic,color: Colors.white,),
+                onPressed: () {
+                  submitted(textController.text);
+                },
+              ),
             ),
           )
         ],
