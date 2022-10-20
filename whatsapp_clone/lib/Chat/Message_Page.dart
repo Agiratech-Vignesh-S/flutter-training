@@ -133,7 +133,8 @@ class _Bottum_barState extends State<Bottum_bar> {
     final message =
     Message(text: value, date: DateTime.now(), isSentByMe: true);
     setState(() {
-      messages.add(message);
+      if(textController.text.isNotEmpty)
+       messages.add(message);
       textController.text = '';
     });
     // print(textController.text);
