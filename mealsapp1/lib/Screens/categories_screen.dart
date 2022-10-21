@@ -4,7 +4,7 @@ import '../dummy_data.dart';
 import '../Widget/category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  @override
+
   Widget build(BuildContext context) {
     return Scaffold(
 

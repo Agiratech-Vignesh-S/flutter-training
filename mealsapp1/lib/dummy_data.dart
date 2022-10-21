@@ -5,8 +5,8 @@ import 'models/meal.dart';
 
 const DUMMY_CATEGORIES = const [
   Category(
-    id: 'c1',
     title: 'Italian',
+    id: 'c1',
     color: Colors.purple,
   ),
   Category(
@@ -57,7 +57,7 @@ const DUMMY_CATEGORIES = const [
 ];
 
 
- List DUMMY_MEALS = [
+ List<Meal> DUMMY_MEALS = [
   Meal(
     id: 'm1',
     categories: [
