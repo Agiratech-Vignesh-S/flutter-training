@@ -1,60 +1,64 @@
 import 'package:flutter/material.dart';
 
-import 'package:shop_app/model/product.dart';
-import 'package:shop_app/Widget/Product_item.dart';
-class product_Screen extends StatelessWidget {
- List<Product>loadedProduct=[
-   Product(
-     id: 'p1',
-     title: 'Red Shirt',
-     description: 'A red shirt - it is pretty red!',
-     price: 29.99,
-     imageUrl:
-     'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
-   ),
-   Product(
-     id: 'p2',
-     title: 'Trousers',
-     description: 'A nice pair of trousers.',
-     price: 59.99,
-     imageUrl:
-     'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg',
-   ),
-   Product(
-     id: 'p3',
-     title: 'Yellow Scarf',
-     description: 'Warm and cozy - exactly what you need for the winter.',
-     price: 19.99,
-     imageUrl:
-     'https://live.staticflickr.com/4043/4438260868_cc79b3369d_z.jpg',
-   ),
-   Product(
-     id: 'p4',
-     title: 'A Pan',
-     description: 'Prepare any meal you want.',
-     price: 49.99,
-     imageUrl:
-     'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
-   ),
- ];
+import 'package:shop_app/Screen/Cart_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/Screen/Cart_screen.dart';
+import '../Widget/Products_grid.dart';
+import '../Widget/badge.dart';
+import 'package:shop_app/Provider/Cart.dart';
 
+enum Opticons {
+  Favorite,
+  All,
+}
+
+class product_Screen extends StatefulWidget {
+  @override
+  State<product_Screen> createState() => _product_ScreenState();
+}
+
+class _product_ScreenState extends State<product_Screen> {
+  var Favoriteonly = false;
+
+  // List<Product>loadedProduct=[
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("MyShop"),),
-      body:GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        childAspectRatio: 3/2,
-        mainAxisSpacing: 10,
-      ), itemBuilder: (ctx,v)=>Product_item(id: loadedProduct[v].id, title: loadedProduct[v].title, imageUrl: loadedProduct[v].imageUrl),
-        itemCount: loadedProduct.length,
-        padding: EdgeInsets.all(10),
-
+      appBar: AppBar(
+        title: Text("MyShop"),
+        actions: <Widget>[
+          PopupMenuButton(
+              onSelected: (Opticons selectvalue) {
+                setState(() {
+                  if (selectvalue == Opticons.Favorite) {
+                    Favoriteonly = true;
+                  } else {
+                    Favoriteonly = false;
+                  }
+                });
+              },
+              icon: Icon(Icons.more_vert_outlined),
+              itemBuilder: (_) => [
+                    PopupMenuItem(
+                        value: Opticons.Favorite, child: Text("favorite")),
+                    PopupMenuItem(value: Opticons.All, child: Text("Show all")),
+                  ]),
+          Consumer<Cart>(
+            builder: (_, cart, ch) => Badge(
+              child:ch as Widget,
+              value: cart.itemcount.toString(),
+            ),child: IconButton(
+            icon: Icon(
+              Icons.shopping_cart,
+            ),
+            onPressed: () {
+              Navigator.of(context).pushNamed(Cart_screen.routeName);
+            },
+          ),
+          ),
+        ],
       ),
+      body: ProductsGrid(Favoriteonly),
     );
   }
 }
-
-
-
