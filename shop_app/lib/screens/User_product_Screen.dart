@@ -12,12 +12,16 @@ class User_productSreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
    final productdata= Provider.of<Products>(context);
+   bool isAdd=true;
+   String id='c1';
     return Scaffold(
       appBar: AppBar(
         title: Text("User products"),
         actions: [
           IconButton(onPressed: (){
-            Navigator.of(context).pushNamed(Edit_Screen.routeName);
+            Navigator.of(context).pushNamed(Edit_Screen.routeName,
+                arguments: {'id': id, 'isAdd': isAdd}
+            );
           }, icon: Icon(Icons.add),)
         ],
       ),
@@ -27,7 +31,9 @@ class User_productSreen extends StatelessWidget {
         child: ListView.builder(itemCount: productdata.items.length,
             itemBuilder: (_ ,i)=>Column(
               children: [
-                UserProduct_item(title: productdata.items[i].title, imagUrl: productdata.items[i].imageUrl),
+                UserProduct_item(
+                    id:productdata.items[i].id,
+                    title: productdata.items[i].title, imagUrl: productdata.items[i].imageUrl),
                 Divider(),
               ],
             )),
