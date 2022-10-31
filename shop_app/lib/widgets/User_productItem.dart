@@ -24,7 +24,7 @@ class UserProduct_item extends StatelessWidget {
         child: Row(
           children: [
             IconButton(onPressed: (){
-              Navigator.of(context).pushNamed(Edit_Screen.routeName,arguments: id);
+              Navigator.of(context).pushNamed(Edit_Screen.routeName,arguments: {'id':id,'isAdd':false});
             }, icon: Icon(Icons.edit)),
             IconButton(onPressed: (){
               Provider.of<Products>(context,listen: false).deletproduct(id);
