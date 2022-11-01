@@ -100,10 +100,10 @@ class _Edit_ScreenState extends State<Edit_Screen> {
       if (_editedproduct.id.isNotEmpty) {
         Provider.of<Products>(context, listen: false)
             .updateproduct(_editedproduct.id, _editedproduct);
-        Navigator.pop(context);
-        setState(() {
-          _isloading = false;
-        });
+        // Navigator.pop(context);
+        // setState(() {
+        //   _isloading = false;
+        // });
       }
     } else {
       try {
