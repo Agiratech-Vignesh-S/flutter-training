@@ -1,12 +1,11 @@
-class OwnHttpException implements Exception {
-  final message;
+class HttpException implements Exception {
+  final String message;
 
-  OwnHttpException({required this.message});
+  HttpException(this.message);
+
   @override
   String toString() {
-    print('ownwxceptions message $message');
     return message;
-    // return super.toString(); //Instance of exception
+    // return super.toString(); // Instance of HttpException
   }
 }
-//it has always to string method to convert error message

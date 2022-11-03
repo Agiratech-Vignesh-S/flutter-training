@@ -23,21 +23,19 @@ isFavorite=newvalue;
 notifyListeners();
   }
 
-  Future<void> toggleFavoriteStatus()async {
-    final oldStatus=isFavorite;
+  Future<void> toggleFavoriteStatus(String authToken,String UserId)async {
+    final oldStatus = isFavorite;
     isFavorite = !isFavorite;
     notifyListeners();
     final url = Uri.parse(
-        'https://shop-app-4b081-default-rtdb.firebaseio.com/products/$id.json');
+        'https://flutter-shop-11bc3-default-rtdb.firebaseio.com/UserFavorite/$UserId/$id.json?auth=$authToken');
     try {
-      final response =
-          await http.patch(url, body: json.encode({'isFavorite': isFavorite}));
+      final response = await http.put(url, body: json.encode(isFavorite));
       if (response.statusCode >= 400) {
         _setValue(oldStatus);
       }
     } catch (e) {
       _setValue(oldStatus);
     }
-
   }
 }

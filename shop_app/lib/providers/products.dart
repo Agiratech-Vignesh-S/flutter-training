@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
+import '../model/http_exception.dart';
 import './product.dart';
 class Products with ChangeNotifier {
   List<Product> _items = [
@@ -41,6 +42,10 @@ class Products with ChangeNotifier {
   ];
 
   // var _showFavoritesOnly = false;
+  final String authToken;
+  final String UserId;
+  Products(this.authToken,this.UserId,this._items);
+
 
 
   List<Product> get items {
@@ -67,14 +72,19 @@ class Products with ChangeNotifier {
   //   _showFavoritesOnly = false;
   //   notifyListeners();
   // }
-  Future<void>fetchandsetproducts()async{
-    final url= Uri.parse('https://flutter-shop-11bc3-default-rtdb.firebaseio.com/Products.json');
+  Future<void>fetchandsetproducts([bool filterByUer=false])async{
+    final filterString=filterByUer?'orderBy="creatorId"&equalTo="$UserId"':'';
+    var url= Uri.parse('https://flutter-shop-11bc3-default-rtdb.firebaseio.com/Products.json?auth=$authToken$filterString');
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
       if(extractedData==null){
         return;
       }
+       url = Uri.parse(
+          'https://flutter-shop-11bc3-default-rtdb.firebaseio.com/UserFavorite/$UserId.json?auth=$authToken');
+      final favresponse=await http.get(url);
+      final Favoritedata=json.decode(favresponse.body);
        List<Product> loadedProducts = [];
       print(extractedData);
       if (extractedData.isEmpty) {
@@ -82,19 +92,15 @@ class Products with ChangeNotifier {
       }
       extractedData.forEach(
             (pId, pData) {
-              // print(pData['title']);
-              // print(pId);
-              // print(pData['description']);
-              // print(pData['price']);
-              // print(pData['isFavorite']);
-              // print(pData['imageUrl']);
+
           loadedProducts.add(Product(
               id:pId,
               title: pData['title'],
               description: pData['description'],
               price: pData['price'],
+              isFavorite:Favoritedata==null? false :Favoritedata[UserId]??false,
               imageUrl: pData['imageUrl'],
-              isFavorite: pData['isFavorite']));
+          ));
         },
       );
       print('loadedProducts$loadedProducts');
@@ -108,7 +114,7 @@ class Products with ChangeNotifier {
 
   }
   Future<void> addProduct(Product product_) async{
-   final url= Uri.parse('https://flutter-shop-11bc3-default-rtdb.firebaseio.com/Products.json');
+   final url= Uri.parse('https://flutter-shop-11bc3-default-rtdb.firebaseio.com/Products.json?auth=$authToken');
    try {
      final value = await http.post(
        url,
@@ -118,6 +124,7 @@ class Products with ChangeNotifier {
          'imageUrl': product_.imageUrl,
          'price': product_.price,
          'isFavorite': product_.isFavorite,
+         'creatorId':UserId
        }),
      );
 
@@ -138,7 +145,7 @@ class Products with ChangeNotifier {
  Future <void> updateproduct(String id,Product newproduct) async{
 final proindex=_items.indexWhere((prod) => prod.id==id);
 if(proindex>=0){
-  final url= Uri.parse('https://flutter-shop-11bc3-default-rtdb.firebaseio.com/Products/$id.json');
+  final url= Uri.parse('https://flutter-shop-11bc3-default-rtdb.firebaseio.com/Products/$id.json?auth=$authToken');
   await http.patch(url,body: json.encode({
   'title':newproduct.title,
    'description':newproduct.description,
@@ -157,23 +164,28 @@ if(proindex>=0){
 
  Future <void> deletproduct(String id)async{
    final url = Uri.parse(
-       'https://shop-app-4b081-default-rtdb.firebaseio.com/products/$id.json');
+       'https://shop-app-4b081-default-rtdb.firebaseio.com/products/$id.json?auth=$authToken');
 
    final existingProductIndex =
    _items.indexWhere((element) => element.id == id);
    Product? existingProduct = _items[existingProductIndex];
+   _items.removeAt(existingProductIndex);
    notifyListeners();
-  final response=await http.delete(url);
-     if(response.statusCode>=400){
-       _items.insert(existingProductIndex, existingProduct as Product);
-       notifyListeners();
-       throw HttpException('Could not delete product.');
-     }
-     existingProduct=null;
+   final response = await http.delete(url);
 
+   if (response.statusCode >= 400) {
+     _items.insert(existingProductIndex, existingProduct as Product);
+     notifyListeners();
+     throw HttpException('Could not delete product.');
+   }
+   existingProduct = null;
+   print(response.statusCode);
 
-     // throw OwnHttpException('Could not delete product');
-
-  }
+   /** Normal removing products
+       http.delete(url);
+       _items.removeWhere((element) => element.id == id);
+       notifyListeners()
+    */
+ }
 }
 
