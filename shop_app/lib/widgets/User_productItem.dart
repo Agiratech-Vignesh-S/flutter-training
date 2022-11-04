@@ -15,7 +15,8 @@ class UserProduct_item extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(title),
-      leading: CircleAvatar
+      leading:
+      CircleAvatar
         (backgroundImage:
       NetworkImage(imagUrl)
       ),

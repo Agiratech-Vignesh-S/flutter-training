@@ -1,27 +1,37 @@
 import 'package:flutter/material.dart';
 
-class Categorie_item extends StatelessWidget {
-  // const Categorie_item({super.key});
-  Color color;
-  String title;
+class CategoryItem extends StatelessWidget {
+  final String title;
+  final Color color;
 
-  Categorie_item(this.color, this.title);
+  const CategoryItem({super.key, required this.title, required this.color});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(15),
-      child: Text(title),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            color.withOpacity(0.6),
-            color,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(15),
+    return MaterialApp(
+      title: 'DeliMeals',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('DeliMeals'),
+      ),
+      body: Center(
+        child: Text('Navigation Time!'),
       ),
     );
   }

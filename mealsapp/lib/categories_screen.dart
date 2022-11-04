@@ -11,9 +11,9 @@ class categ_screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView(
 // ignore: sort_child_properties_last
-      children:
-          Dummy_Categories.map((data) => Categorie_item(data.color, data.title))
-              .toList(),
+      children: Dummy_Categories.map(
+              (data) => CategoryItem(color: data.color, title: data.title))
+          .toList(),
 // ignore: prefer_const_constructors
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 200,

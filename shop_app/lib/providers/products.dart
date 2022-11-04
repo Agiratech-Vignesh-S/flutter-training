@@ -144,6 +144,7 @@ class Products with ChangeNotifier {
   }
  Future <void> updateproduct(String id,Product newproduct) async{
 final proindex=_items.indexWhere((prod) => prod.id==id);
+print(proindex);
 if(proindex>=0){
   final url= Uri.parse('https://flutter-shop-11bc3-default-rtdb.firebaseio.com/Products/$id.json?auth=$authToken');
   await http.patch(url,body: json.encode({
@@ -152,13 +153,12 @@ if(proindex>=0){
    'imageUrl':newproduct.imageUrl,
    'price':newproduct.price,
     // 'isFavorite':newproduct.isFavorite
-
  }));
   _items[proindex]=newproduct;
   notifyListeners();
 }else{
  //p print(proindex);
-  print("....");
+  print("ygbgs....");
 }
   }
 
@@ -169,6 +169,7 @@ if(proindex>=0){
    final existingProductIndex =
    _items.indexWhere((element) => element.id == id);
    Product? existingProduct = _items[existingProductIndex];
+   print(existingProduct);
    _items.removeAt(existingProductIndex);
    notifyListeners();
    final response = await http.delete(url);
