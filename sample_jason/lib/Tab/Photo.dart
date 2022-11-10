@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sample_jason/provider/Photo_model.dart';
+import 'package:sample_jason/provider/Photo_provider.dart';
 import 'package:provider/provider.dart';
 
 class Photo extends StatefulWidget {
