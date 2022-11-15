@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:httprequest/Edit_screen.dart';
 import 'package:httprequest/Home.dart';
 import 'package:httprequest/Provider/User_pro.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Home(),
+        routes: {Edit_screen.routeName:(context)=>Edit_screen()},
       ),
     );
   }
