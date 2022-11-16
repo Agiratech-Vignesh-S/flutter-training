@@ -15,17 +15,43 @@ class _HomeState extends State<Home> {
     super.initState();
     Provider.of<ProviderExample>(context, listen: false).factdata();
   }
+
   @override
   Widget build(BuildContext context) {
-    final user= Provider.of<ProviderExample>(context,listen: false);
+    final user = Provider.of<ProviderExample>(context);
     return Scaffold(
-      appBar: AppBar(
+        appBar: AppBar(
         title: Text('http request'),
-      ),
-      body: ListTile(
-        title: Text("name : ${user.Users_?.first_name!}  ${user.Users_?.last_name!}"),
-        subtitle: Text("email :  ${user.Users_?.email!}"),
-      )
+    ),
+    body:ListView.builder(
+    itemCount: user.Users_.length,
+    itemBuilder: ((context, index) =>
+        ListTile(
+                    title: Text("name : ${user.Users_[index].first_name} ""${user.Users_[index].last_name}",),
+           subtitle: Text("email : ${user.Users_[index].email}"),
+          trailing: SizedBox(
+            width: 100,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(onPressed: (){
+                  // print('id of edited product${user.Users_[index].id}');
+                  // final id = user.Users_[index].id.toString();
+                  // Navigator.of(context).pushNamed(
+                  //     Edit_screen.routeName,
+                  //     arguments: {'id': id, 'isAdd': false});
+                }, icon: Icon(Icons.edit,color: Colors.green,)),
+                IconButton(icon: Icon(Icons.delete,color: Colors.red,),onPressed: (){
+                  Provider.of<ProviderExample>(context,
+                      listen: false)
+                      .deleteUser(
+                      user.Users_[index].id.toString());
+                },),
+              ],
+            ),
+          ),
+    )),
+    )
 
     );
   }
