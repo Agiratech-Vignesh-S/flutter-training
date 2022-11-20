@@ -19,26 +19,18 @@ class _Edit_screenState extends State<Edit_screen> {
 
 
   Future<void> _save(bool isadd) async {
-    print('save called');
     final isValid = _form.currentState!.validate();
     if (!isValid) {
       return;
     }
     _form.currentState!.save();
     setState(() {
-      // print('update product');
       isLoading = true;
     });
     if (isadd) {
       await Provider.of<User_provider>(context, listen: false)
           .add_user(_editedUser);
     } else {
-      print('editorUser');
-      print('editoruser Id ${_editedUser.id}');
-      print('editoruser name ${_editedUser.first_name}');
-      print('editoruser name ${_editedUser.last_name}');
-      print('editoruser email ${_editedUser.email}');
-      print('editoruser passwrod ${_editedUser.password}');
       await Provider.of<User_provider>(context, listen: false)
           .updateUser(_editedUser.id!, _editedUser);
     }
@@ -56,8 +48,6 @@ class _Edit_screenState extends State<Edit_screen> {
     if (_isInit) {
       uservalues =
       ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
-      // print('diddependency called');
-      // print(uservalues['id']);
       if (uservalues['id'] != '') {
         _editedUser = Provider.of<User_provider>(context, listen: false)
             .findById(uservalues['id']);
@@ -89,14 +79,12 @@ class _Edit_screenState extends State<Edit_screen> {
         child: Column(
           children: [
             Form(
-             // autovalidateMode: AutovalidateMode.disabled,
               key: _form,
               child: Column(
                 children: [
                   TextFormField(
                     decoration: InputDecoration(labelText: 'First_name'),
                     initialValue: initValue['first_name'],
-                    // controller: textEditingController,
                     onSaved: (value) {
                       _editedUser = User(id: _editedUser.id,
                           first_name: value,
@@ -115,15 +103,12 @@ class _Edit_screenState extends State<Edit_screen> {
                           last_name: value,
                           email: _editedUser.email,
                           password: _editedUser.password);
-                      // _authData['password'] = value.toString();
                     },
                   ),
                   TextFormField(
                     decoration: InputDecoration(labelText: 'Email'),
                     initialValue: initValue['email'],
-
                     validator: (value) {
-                      print('email validation ${isURL(value.toString())}');
                       if(!(isEmail(value.toString()))){
                         return "please check a value";
                       }
@@ -133,7 +118,6 @@ class _Edit_screenState extends State<Edit_screen> {
 
 
                     } ,
-                    // controller: textEditingController,
                     onSaved: (value) {
                       _editedUser = User(id: _editedUser.id,
                           first_name: _editedUser.first_name,
@@ -147,7 +131,6 @@ class _Edit_screenState extends State<Edit_screen> {
                     obscureText: true,
                     initialValue: initValue['password'],
 
-                    // controller: _passwordController,
                     onSaved: (value) {
                       _editedUser = User(id: _editedUser.id,
                           first_name: _editedUser.first_name,

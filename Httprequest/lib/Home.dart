@@ -14,21 +14,19 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   void initState() {
     var isLoading = true;
-    Provider.of<User_provider>(context, listen: false).fetchusers();
+    Provider.of<User_provider>(context,listen: false).fetchusers();
     isLoading = false;
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
    final val= Provider.of<User_provider>(context);
-   // print('object${val.Users_[0].last_name}');
 
    return Scaffold(
       appBar: AppBar(
         title: Text("http request"),
         actions: [
           IconButton(onPressed: (){
-            // final id = val.Users_[index].id.toString();
             Navigator.of(context).pushNamed(
                 Edit_screen.routeName,
                 arguments: {'id': '', 'isAdd': true});
@@ -51,7 +49,6 @@ class _HomeState extends State<Home> {
                  mainAxisAlignment: MainAxisAlignment.end,
                  children: [
                    IconButton(onPressed: (){
-                     print('id of edited product${val.Users_[index].id}');
                      final id = val.Users_[index].id.toString();
                      Navigator.of(context).pushNamed(
                          Edit_screen.routeName,

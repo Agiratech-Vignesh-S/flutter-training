@@ -19,7 +19,6 @@ class User_provider with ChangeNotifier {
             'password': user.password,
           }))
           .then((value) {
-        print('${json.decode(value.body)['name']}');
         User(
             id: json.decode(value.body)['name'],
             first_name: user.first_name,
@@ -27,7 +26,6 @@ class User_provider with ChangeNotifier {
             email: user.email,
             password: user.password,);
         Users_.add(User);
-        print('users${Users_[0].id}');
         notifyListeners();
       });
     } catch (e) {
@@ -42,22 +40,17 @@ class User_provider with ChangeNotifier {
       final response = await http.get(url);
       final extractedUserData =
       json.decode(response.body) as Map<String, dynamic>;
-      // final List<User> usersList = [];
       extractedUserData.forEach((key, value) {
-        // print('values$value');
         Users_.add(User(
             id: key,
             first_name: value['first_name'],
-          last_name: value['last_name'],
-          email: value['email'],
+            last_name: value['last_name'],
+            email: value['email'],
             password: value['password'],
         )
         );
       });
-      print('object');
-      // Users_ = usersList;
       notifyListeners();
-      // print(Users_[0].id);
     } catch (e) {
       rethrow;
     }
@@ -80,25 +73,18 @@ class User_provider with ChangeNotifier {
 
   Future<void> updateUser(String id, User newUser) async {
     final userIndex = Users_.indexWhere((element) => element.id == id);
-    print(id);
-    print('update index$userIndex');
-    print('userIndex\$${newUser.first_name}');
     if (userIndex >= 0) {
-      print('data matched');
       final url = Uri.parse(
           'https://flutter-shop-11bc3-default-rtdb.firebaseio.com/api/$id.json');
       await http.patch(url,
           body: json.encode({
-            'name': newUser.first_name,
+            'first_name': newUser.first_name,
             'last_name':newUser.last_name,
             'email': newUser.email,
             'password': newUser.password,
           }))
           .then((value) {
-        print(value);
       });
-      print('old data email${Users_[userIndex].email}');
-      print(' new mail data${newUser.email}');
 
       Users_[userIndex] = newUser;
 
