@@ -1,7 +1,6 @@
 import 'package:placeholder/model/Albummodel.dart';
 import 'package:placeholder/model/Albummodel.dart';
 
-import 'Albummodel.dart';
 
 class Album {
   List<Detail>? Details;
@@ -16,31 +15,31 @@ class Album {
 }
 
 class Detail {
-  int? albumId;
+  int? user_id;
   int? id;
   String? title;
-  String? url;
-  String? thumbnailUrl;
+
+
   Detail({
-    this.albumId,
+    this.user_id,
     this.id,
     this.title,
-    this.url,
-    this.thumbnailUrl,
   });
   factory Detail.fromJson(Map<String, dynamic> json) {
     return Detail(
-        albumId: json['albumId'],
+        user_id: json['UserId'],
         id: json['id'],
-        title: json['title'],
-        url: json['url'],
-        thumbnailUrl: json['thumbnailUrl']);
+        title: json['title']);
   }
   Map<String, dynamic> toJson() => {
+    'UserId': user_id,
     'id': id,
     'title': title,
-    'albumId': albumId,
-    'url': url,
-    'thumbnailUrl': thumbnailUrl
+
   };
+  @override
+ toStirng() {
+    return this.id;
+  }
 }
+
