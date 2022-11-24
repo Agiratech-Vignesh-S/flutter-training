@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:placeholder/Showdialoge.dart';
-import 'package:placeholder/model/Albummodel.dart';
-import 'package:placeholder/model/errormessage.dart';
+import 'package:placeholder/Dialoge.dart';
+import 'package:placeholder/model/AlbumModel.dart';
+import 'package:placeholder/model/ErrorMessage.dart';
 import 'package:placeholder/provider/Albumprovider.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +23,7 @@ class _HomepageState extends State<Homepage> {
   void initState() {
     super.initState();
     futurealbum =
-        Provider.of<AlbumProvider>(context, listen: false).factalbum();
+        Provider.of<AlbumProvider>(context, listen: false).factAlbum();
   }
 
   @override
@@ -36,7 +36,7 @@ class _HomepageState extends State<Homepage> {
           actions: [
             IconButton(
                 onPressed: () async {
-                  await Showdialoge().showdialogue(context,0);
+                  await Dialoge().showdialogue(context,0);
                 },
                 icon: const Icon(Icons.add))
           ],
@@ -47,22 +47,19 @@ class _HomepageState extends State<Homepage> {
                 builder: ((context, snapshot) {
                   if (snapshot.hasData) {
                     return GridView.builder(
-                        itemCount: value.albumdata?.Details!.length,
+                        itemCount: value.albumdata?.details!.length,
                         itemBuilder: (context, index) => Card(
                                 child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: GridTile(
-                                child: Text(value
-                                    .albumdata!.Details![index].title
-                                    .toString()),
                                 footer: GridTileBar(
                                   title: Text(value
-                                      .albumdata!.Details![index].id
+                                      .albumdata!.details![index].id
                                       .toString()),
                                   leading: IconButton(
                                     onPressed: () async {
-                                      int ids = value.albumdata!.Details![index].id!;
-                                      await Showdialoge().showdialogue(context,ids);
+                                      int ids = value.albumdata!.details![index].id!;
+                                      await Dialoge().showdialogue(context,ids);
                                     },
                                     icon: const Icon(
                                       Icons.edit,
@@ -73,10 +70,10 @@ class _HomepageState extends State<Homepage> {
                                     onPressed: () async{
                                       try{
                                         int? ids = value.albumdata!
-                                            .Details![index].id;
+                                            .details![index].id;
                                        await value.deleteUser(ids!);
                                       }on OwnHttpException catch(e){
-                                        // showMessage(context,e.message);
+                                         Dialoge().showMessage(context,e.message);
                                       }
                                     },
                                     icon: const Icon(
@@ -86,6 +83,9 @@ class _HomepageState extends State<Homepage> {
                                   ),
                                   backgroundColor: Colors.black54,
                                 ),
+                                child: Text(value
+                                    .albumdata!.details![index].title
+                                    .toString()),
                               ),
                             )),
                         gridDelegate:
@@ -96,11 +96,10 @@ class _HomepageState extends State<Homepage> {
                           mainAxisSpacing: 6,
                         ));
                   } else if (snapshot.hasError) {
-                    return Center(child: Text("Failed to create album."));
+                    return const Center(child: Text("Failed to create album."));
                   }
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 })),
-
         )
     );
   }

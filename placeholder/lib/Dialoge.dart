@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:placeholder/model/Albummodel.dart';
-import 'package:placeholder/model/errormessage.dart';
+import 'package:placeholder/model/AlbumModel.dart';
+import 'package:placeholder/model/ErrorMessage.dart';
 import 'package:placeholder/provider/Albumprovider.dart';
 import 'package:provider/provider.dart';
 
-class Showdialoge{
+class Dialoge{
 
 final TextEditingController titlecontroller = TextEditingController();
 final TextEditingController idcontroller = TextEditingController();
+
 void showMessage(BuildContext context, String message) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
@@ -23,15 +24,13 @@ void showMessage(BuildContext context, String message) {
 }
 
   Future<void> showdialogue(BuildContext rcontext, int? ids) async {
-  print("hfjvbj");
     final value_ = Provider.of<AlbumProvider>(rcontext,listen: false);
-    final albumdataIndex =
-    value_.albumdata!.Details!.indexWhere((element) => element.id == ids);
+    final albumdataIndex = value_.albumdata!.details!.indexWhere((element) => element.id == ids);
     int? exisId;
     String? existtitle;
     if (ids != 0) {
-      existtitle = value_.albumdata!.Details![albumdataIndex].title;
-      exisId = value_.albumdata!.Details![albumdataIndex].id;
+      existtitle = value_.albumdata!.details![albumdataIndex].title;
+      exisId = value_.albumdata!.details![albumdataIndex].id;
     }
     showDialog(
         context: rcontext,
