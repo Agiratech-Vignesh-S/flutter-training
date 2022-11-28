@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:httprequest/Edit_screen.dart';
-import 'package:httprequest/Home.dart';
 import 'package:httprequest/Provider/User_pro.dart';
 import 'package:provider/provider.dart';
+import 'package:httprequest/Route/routes.dart'as route;
+import 'package:httprequest/Home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Home(),
-        routes: {Edit_screen.routeName:(context)=>Edit_screen()},
+          onGenerateRoute: route.controller,
       ),
     );
   }

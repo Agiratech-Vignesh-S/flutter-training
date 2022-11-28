@@ -6,6 +6,12 @@ import 'package:validators/validators.dart';
 
 class Edit_screen extends StatefulWidget {
   static const routeName='/edit_screen';
+
+  final String id;
+  final bool add;
+
+  Edit_screen({required this.id,required this.add});
+
   @override
   State<Edit_screen> createState() => _Edit_screenState();
 }

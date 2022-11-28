@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:httprequest/model/Add_User.dart';
 import 'package:http/http.dart'as http;
+import 'package:httprequest/model/CoustomException.dart';
 class User_provider with ChangeNotifier {
 
   var Users_ = [
@@ -29,7 +30,7 @@ class User_provider with ChangeNotifier {
         notifyListeners();
       });
     } catch (e) {
-      rethrow;
+      throw CustomException(message: "Faild to load photo");
     }
     // print(user);
   }
