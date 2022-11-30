@@ -10,12 +10,40 @@ class ThirdScreen extends StatelessWidget {
     final val1=Provider.of<provider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Third Screen"),
+        backgroundColor: Colors.green,
+        title: const Text("Third Screen"),
         centerTitle: true,
       ),
-      body: Center(
-        child: Text(val1.count.toString(),style: TextStyle(fontSize: 50),),
+      body:
+      Center(
+        child: Text(val1.count.toString(),style: const TextStyle(fontSize: 50),),
       ),
+      // ListView(
+      //   children: [
+      //     Container(
+      //       height: 200,
+      //       color: Colors.lightGreenAccent,
+      //       child: Text("kfhbvjef"),
+      //     ),
+      //     Container(
+      //       height: 200,
+      //       color: Colors.lightGreenAccent,
+      //       child: Text("kfhbvjef"),
+      //     ),
+      //     Container(
+      //       height: 200,
+      //       color: Colors.lightGreenAccent,
+      //       child: Text("kfhbvjef"),
+      //     ),
+      //     Container(
+      //       height: 200,
+      //       color: Colors.lightGreenAccent,
+      //       child: Text("kfhbvjef"),
+      //     ),
+      //
+      //   ],
+      // ),
+
     );
   }
 }
