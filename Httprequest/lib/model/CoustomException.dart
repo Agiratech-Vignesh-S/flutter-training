@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class CustomException implements Exception {
-  String? message;
+class OwnHttpException implements Exception {
+  final String message;
 
-  CustomException({required this.message});
+  OwnHttpException({required this.message});
   @override
   String toString() {
-    return message!;
+    return message;
   }
 }

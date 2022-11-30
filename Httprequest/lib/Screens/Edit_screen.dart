@@ -5,24 +5,34 @@ import 'package:provider/provider.dart';
 import 'package:validators/validators.dart';
 
 class Edit_screen extends StatefulWidget {
-  static const routeName='/edit_screen';
+  static const routeName = '/edit_screen';
 
   final String id;
   final bool add;
 
-  Edit_screen({required this.id,required this.add});
+  Edit_screen({required this.id, required this.add});
 
   @override
   State<Edit_screen> createState() => _Edit_screenState();
 }
 
 class _Edit_screenState extends State<Edit_screen> {
+  User _editedUser = User(
+    id: '',
+    uuid: '',
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: '',
+  );
 
-  User _editedUser = User(id: '',first_name: '',last_name: '', email: '', password: '',);
-
-  Map initValue = {'first_name': '','lastname': '', 'Email': '', 'password': '',};
+  Map initValue = {
+    'first_name': '',
+    'lastname': '',
+    'Email': '',
+    'password': '',
+  };
   bool isLoading = false;
-
 
   Future<void> _save(bool isadd) async {
     final isValid = _form.currentState!.validate();
@@ -35,10 +45,10 @@ class _Edit_screenState extends State<Edit_screen> {
     });
     if (isadd) {
       await Provider.of<User_provider>(context, listen: false)
-          .add_user(_editedUser);
+          .add_and_edit('0', _editedUser);
     } else {
       await Provider.of<User_provider>(context, listen: false)
-          .updateUser(_editedUser.id!, _editedUser);
+          .add_and_edit(_editedUser.id!, _editedUser);
     }
     setState((() {
       isLoading = false;
@@ -46,20 +56,16 @@ class _Edit_screenState extends State<Edit_screen> {
     Navigator.pop(context);
   }
 
-
-  bool _isInit=true;
-  var uservalues;
+  bool _isInit = true;
   @override
   void didChangeDependencies() {
     if (_isInit) {
-      uservalues =
-      ModalRoute.of(context)!.settings.arguments as Map<String, Object>;
-      if (uservalues['id'] != '') {
+      if (widget.id != '') {
         _editedUser = Provider.of<User_provider>(context, listen: false)
-            .findById(uservalues['id']);
+            .findById(widget.id);
         initValue = {
           'first_name': _editedUser.first_name,
-          'last_name':_editedUser.last_name,
+          'last_name': _editedUser.last_name,
           'email': _editedUser.email,
           'password': _editedUser.password,
         };
@@ -68,18 +74,18 @@ class _Edit_screenState extends State<Edit_screen> {
     _isInit = false;
     super.didChangeDependencies();
   }
+
   final _form = GlobalKey<FormState>();
 
-
-  TextEditingController? textEditingController=TextEditingController();
-  bool isEmailcorrect=false;
+  TextEditingController? textEditingController = TextEditingController();
+  bool isEmailcorrect = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: isEmailcorrect==false?Colors.red:Colors.green,
-        title: uservalues['isAdd'] ?Text("Add User"):Text('edit user'),
+        backgroundColor: isEmailcorrect == false ? Colors.red : Colors.green,
+        title: widget.add ? Text("Add User") : Text('edit user'),
       ),
       body: Card(
         child: Column(
@@ -92,7 +98,9 @@ class _Edit_screenState extends State<Edit_screen> {
                     decoration: InputDecoration(labelText: 'First_name'),
                     initialValue: initValue['first_name'],
                     onSaved: (value) {
-                      _editedUser = User(id: _editedUser.id,
+                      _editedUser = User(
+                          id: _editedUser.id,
+                          uuid: _editedUser.uuid,
                           first_name: value,
                           last_name: _editedUser.last_name,
                           email: _editedUser.email,
@@ -104,7 +112,9 @@ class _Edit_screenState extends State<Edit_screen> {
                     initialValue: initValue['last_name'],
                     keyboardType: TextInputType.name,
                     onSaved: (value) {
-                      _editedUser = User(id: _editedUser.id,
+                      _editedUser = User(
+                          id: _editedUser.id,
+                          uuid: _editedUser.uuid,
                           first_name: _editedUser.first_name,
                           last_name: value,
                           email: _editedUser.email,
@@ -115,17 +125,17 @@ class _Edit_screenState extends State<Edit_screen> {
                     decoration: InputDecoration(labelText: 'Email'),
                     initialValue: initValue['email'],
                     validator: (value) {
-                      if(!(isEmail(value.toString()))){
+                      if (!(isEmail(value.toString()))) {
                         return "please check a value";
                       }
                       setState(() {
-                        isEmailcorrect=isEmail(value.toString());
+                        isEmailcorrect = isEmail(value.toString());
                       });
-
-
-                    } ,
+                    },
                     onSaved: (value) {
-                      _editedUser = User(id: _editedUser.id,
+                      _editedUser = User(
+                          id: _editedUser.id,
+                          uuid: _editedUser.uuid,
                           first_name: _editedUser.first_name,
                           last_name: _editedUser.last_name,
                           email: value,
@@ -136,9 +146,10 @@ class _Edit_screenState extends State<Edit_screen> {
                     decoration: InputDecoration(labelText: 'password'),
                     obscureText: true,
                     initialValue: initValue['password'],
-
                     onSaved: (value) {
-                      _editedUser = User(id: _editedUser.id,
+                      _editedUser = User(
+                          id: _editedUser.id,
+                          uuid: _editedUser.uuid,
                           first_name: _editedUser.first_name,
                           last_name: _editedUser.last_name,
                           email: _editedUser.email,
@@ -148,12 +159,11 @@ class _Edit_screenState extends State<Edit_screen> {
                   SizedBox(
                     height: 30,
                   ),
-                  ElevatedButton(onPressed:(){
-                    _save(uservalues['isAdd']);
-                  },
-                      child: Text(uservalues['isAdd']
-                          ? 'Save'
-                          : 'Update'))
+                  ElevatedButton(
+                      onPressed: () async {
+                        _save(widget.add);
+                      },
+                      child: Text(widget.add ? 'Save' : 'Update'))
                 ],
               ),
             ),

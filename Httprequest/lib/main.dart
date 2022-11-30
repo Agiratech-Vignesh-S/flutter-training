@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:httprequest/Provider/User_pro.dart';
 import 'package:provider/provider.dart';
-import 'package:httprequest/Route/routes.dart'as route;
-import 'package:httprequest/Home.dart';
+import 'package:httprequest/Route/routes.dart' as route;
+import 'package:httprequest/Screens/Home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Home(),
-          onGenerateRoute: route.controller,
+        onGenerateRoute: route.controller,
       ),
     );
   }
