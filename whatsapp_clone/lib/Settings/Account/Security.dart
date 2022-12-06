@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+import '../../Widget/SwitchListTile.dart';
+
 class Security extends StatefulWidget {
   const Security({Key? key}) : super(key: key);
 
@@ -98,19 +100,15 @@ class _SecurityState extends State<Security> {
             ),
           ),
 
-          SwitchListTile(
+          SwitchlistTile(
             value: tag2,
-            onChanged: (value) {
+            onchange: (value) {
               setState(() => tag2 = value);
             },
-            activeColor: Colors.green,
-            title: const Text(
+            title:
               "Read receipts",
-            ),
-            subtitle: const Text(
+            subtitle:
                 "Get notified when your security code changes for a contact's phone in an end-to-encrypted chat. if you have multiple device.this setting must be enabled on each device where you to get notification. "),
-          ),
-
         ],
       ),
     ),

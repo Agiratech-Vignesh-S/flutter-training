@@ -4,16 +4,19 @@ class SwitchlistTile extends StatelessWidget {
 
   final String title;
   final String subtitle;
-  Function value;
-   SwitchlistTile({super.key, required this.title, required this.subtitle,required this.value});
+  final bool value;
+  Function onchange;
+
+   SwitchlistTile({super.key, required this.title, required this.subtitle,required this.onchange,required this.value});
 
   @override
   Widget build(BuildContext context) {
     return  SwitchListTile(
-      onChanged: value(),
+
+      onChanged: onchange(),
       activeColor: Colors.green,
       title: Text(title),
-      subtitle: Text(subtitle), value: false,
+      subtitle: Text(subtitle), value: value,
     );
   }
 }

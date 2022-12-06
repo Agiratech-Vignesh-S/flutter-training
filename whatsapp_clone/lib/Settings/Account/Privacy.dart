@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../Widget/ListTile.dart';
+
 class Privacy extends StatefulWidget {
   const Privacy({Key? key}) : super(key: key);
 
@@ -43,21 +45,21 @@ class _PrivacyState extends State<Privacy> {
                   ),
                 ),
               ),
-              const ListTile(
-                title: Text("Last seen"),
-                subtitle: Text("Nobody"),
+              const listTile(
+                title: "Last seen",
+                subtitle: "Nobody",
               ),
-              const ListTile(
-                title: Text("Profile photo"),
-                subtitle: Text("7 contacts excluded"),
+              const listTile(
+                title: "Profile photo",
+                subtitle:"7 contacts excluded",
               ),
-              const ListTile(
-                title: Text("About"),
-                subtitle: Text("My contacts"),
+              const listTile(
+                title: "About",
+                subtitle: "My contacts",
               ),
-              const ListTile(
-                title: Text("Status"),
-                subtitle: Text("7 Contacts selected"),
+              const listTile(
+                title: "Status",
+                subtitle:"7 Contacts selected",
               ),
               SwitchListTile(
                 value: tag2,
@@ -90,22 +92,13 @@ class _PrivacyState extends State<Privacy> {
                 subtitle: Text("Start new chats with disappearing messages set to your timer"),
                 trailing: Text("off"),
               ),
-              const ListTile(
-                title: Text("Groups"),
-                subtitle: Text("My contacts"),
+              const listTile(
+                title: "Groups",
+                subtitle: "My contacts",
               ),
-              const ListTile(
-                title: Text("Live location"),
-                subtitle: Text("None"),
-              ),
-              const ListTile(
-                title: Text("Blocked contacts"),
-                subtitle: Text("7"),
-              ),
-              const ListTile(
-                title: Text("Fingerprint lock"),
-                subtitle: Text("Disabled"),
-              ),
+              const listTile(title: "Live location", subtitle:"None",),
+             listTile(title: "Blocked contacts", subtitle: "7"),
+              listTile(title: "Fingerprint lock",subtitle:"Disabled" ),
             ],
           ),
         ),
@@ -113,3 +106,4 @@ class _PrivacyState extends State<Privacy> {
     );
   }
 }
+

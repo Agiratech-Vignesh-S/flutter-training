@@ -8,6 +8,7 @@ import 'package:whatsapp_clone/Settings/Settings_storage.dart';
 import 'Home.dart';
 
 import 'Settings/Account.dart';
+import 'Widget/Rowlisttile.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -161,27 +162,14 @@ class _SettingsState extends State<Settings> {
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Expanded(
-                child: ListTile(
-                  onTap: () {
-                    Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => Account()));
-                  },
-                  leading: const Icon(
-                    Icons.key,
-                    size: 30,
-                  ),
-                  title: const Text(
-                    "Account",
-                    style: TextStyle(fontWeight: FontWeight.w500),
-                  ),
-                  subtitle: Text("Privacy,Security,Change number"),
-                ),
-              ),
-            ],
+          RowLIsttile(
+            title: "Account",
+            subtitle: "Privacy,Security,Change number",
+            icon: Icon(Icons.key,size: 40),
+            ontab: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Account()));
+            },
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -311,3 +299,4 @@ class _SettingsState extends State<Settings> {
     );
   }
 }
+
