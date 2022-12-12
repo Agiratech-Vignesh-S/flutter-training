@@ -24,6 +24,7 @@ class MovieData {
   final bool? video;
   final num? voteAverage;
   final int? voteCount;
+
   MovieData({
     required this.backdropPath,
     required this.id,

@@ -4,9 +4,10 @@ import 'package:provider/provider.dart';
 Widget StackWidget(BuildContext context, int index){
   final val= Provider.of<Moviesprovider>(context);
   return GestureDetector(
-    onTap: (){
-      print(index);
-      Navigator.of(context).pushNamed('/Detial_screen',arguments: {'index':index});
+    onTap: ()async{
+      print(val.movieslist?.item[index].id);
+     await val.loadVideo(val.movieslist?.item[index].id as int);
+      Navigator.of(context).pushNamed('/Detial_screen',arguments: {'index':index,'id':val.movieslist?.item[index].id});
     },
     child: Stack(
       children: [
@@ -18,8 +19,8 @@ Widget StackWidget(BuildContext context, int index){
           image: DecorationImage(
             image: NetworkImage("https://image.tmdb.org/t/p/w185/${val.movieslist?.item[index].posterPath}"),
          fit: BoxFit.cover),
-  ),
-            child: Column(
+            ),
+            child:  Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Screen/DetilePage.dart';
+import '../Screen/Detialpage/DetilePage.dart';
 import '../Screen/Myhomepage.dart';
 
 Route<dynamic> controller(RouteSettings settings) {
@@ -12,7 +12,7 @@ Route<dynamic> controller(RouteSettings settings) {
       var data = settings.arguments as Map<String, dynamic>;
       return MaterialPageRoute(
         builder: (context) {
-          return DetilPage(index: data['index']);},
+          return DetilPage(index: data['index'],id: data['id'],);},
       );
     case homepage:
       return MaterialPageRoute(builder: (context) => MyHomePage(),);
